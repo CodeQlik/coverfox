@@ -104,7 +104,7 @@ const Banner = () => {
           <div className="flex-1 flex flex-col justify-center gap-6 min-w-[320px]">
             <div>
               <h1 className="text-4xl sm:text-5xl font-light text-black leading-tight">
-                Let's find you<br />
+                Let&#39;s find you<br />
                 <span className="font-bold text-[#23235F]">the Best Insurance</span>
               </h1>
             </div>
