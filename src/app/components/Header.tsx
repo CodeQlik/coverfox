@@ -138,46 +138,58 @@ const navItems = [
     type: "dropdown",
     content: (
       <div className="p-4 w-80 bg-white">
-        <div className="mb-4">
-          <div className="flex items-center gap-2 mb-1 text-black"><span>📞</span> <span className="font-semibold">Helpline for buying a new policy</span></div>
-          <div className="font-bold text-black">1800-208-8787</div>
+        {/* My account section */}
+        <div className="mb-2">
+          <div className="text-xs font-bold text-[#00E0E0] mb-2 bg-[#E6FCFC] px-3 py-1 rounded-full w-max">My account</div>
+          <ul className="space-y-3 mb-4">
+            <li className="flex items-center gap-3">
+              <span className="text-xl">📋</span>
+              <span className="font-semibold text-[#23235F]">Dashboard</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="text-xl">🗂️</span>
+              <div>
+                <div className="font-semibold text-[#23235F]">Policies</div>
+                <div className="text-xs text-gray-400">Sign in to view all your policies</div>
+              </div>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="text-xl">❓</span>
+              <span className="font-semibold text-[#23235F]">Get help</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="text-xl">📞</span>
+              <span className="font-semibold text-[#23235F]">Manage communication<br/>preferences</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="text-xl">🕵️‍♂️</span>
+              <span className="font-semibold text-[#23235F]">Verify your advisor</span>
+            </li>
+          </ul>
         </div>
-        <div className="mb-4">
-          <div className="flex items-center gap-2 mb-1 text-black"><span>⚙️</span> <span className="font-semibold">Helpline for existing policy</span></div>
-          <div className="font-bold text-black">1800-258-5970</div>
+        {/* Contact us section */}
+        <div className="mb-2">
+          <div className="text-xs font-bold text-[#00E0E0] mb-2 bg-[#E6FCFC] px-3 py-1 rounded-full w-max">Contact us</div>
+          <div className="flex gap-4 mb-4">
+            <div className="flex flex-col items-center gap-1">
+              <div className="bg-[#E6FCFC] rounded-xl p-3 text-2xl">💬</div>
+              <div className="text-xs text-[#23235F] text-center">Connect on<br/>Whatsapp</div>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <div className="bg-[#E6FCFC] rounded-xl p-3 text-2xl">📍</div>
+              <div className="text-xs text-[#23235F] text-center">Stores<br/>near you</div>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+              <div className="bg-[#E6FCFC] rounded-xl p-3 text-2xl">📞</div>
+              <div className="text-xs text-[#23235F] text-center">Request a<br/>callback</div>
+            </div>
+          </div>
         </div>
-        <div className="mb-4">
-          <div className="flex items-center gap-2 mb-1 text-black"><span>💵</span> <span className="font-semibold">Helpline for claim</span></div>
-          <div className="font-bold text-black">1800-258-5881</div>
-        </div>
-        <hr className="my-2" />
-        <div className="mb-2 text-xs font-semibold text-black">My account</div>
-        <ul className="space-y-1 text-sm mb-2">
-          {[
-            { icon: "👤", text: "Dashboard" },
-            { icon: "📄", text: "Policies" },
-            { icon: "❓", text: "Get help" },
-            { icon: "📞", text: "Manage communication preferences" },
-            { icon: "🕵️‍♂️", text: "Verify your advisor" },
-          ].map(({ icon, text }) => (
-            <li key={text} className="flex items-center gap-2 px-2 py-1 rounded transition hover:bg-blue-50 text-black hover:text-black cursor-pointer">{icon} {text}</li>
-          ))}
-        </ul>
-        <div className="mb-2 text-xs font-semibold text-black">Contact us</div>
-        <div className="flex gap-2">
-          <button className="flex flex-col items-center gap-1 p-2 hover:bg-blue-50 text-black hover:text-black rounded transition">
-            <span>💬</span>
-            <span className="text-xs">Whatsapp</span>
-          </button>
-          <button className="flex flex-col items-center gap-1 p-2 hover:bg-blue-50 text-black hover:text-black rounded transition">
-            <span>📍</span>
-            <span className="text-xs">Stores</span>
-          </button>
-          <button className="flex flex-col items-center gap-1 p-2 hover:bg-blue-50 text-black hover:text-black rounded transition">
-            <span>📞</span>
-            <span className="text-xs">Callback</span>
-          </button>
-        </div>
+        {/* View more link */}
+        {/* <div className="flex items-center gap-2 text-[#23235F] mt-2 cursor-pointer hover:underline">
+          <span className="text-2xl">🔲</span>
+          <span className="font-medium">View more</span>
+        </div> */}
       </div>
     ),
   },
