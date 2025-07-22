@@ -10,28 +10,38 @@ const features = [
 const floatingBoxes = [
   {
     icon: (
-      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#F3F0FF"/><path d="M12 7v10M7 12h10" stroke="#7B61FF" strokeWidth="2" strokeLinecap="round"/></svg>
+      <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#F3F0FF"/><path d="M20 12v12M12 20h16" stroke="#7B61FF" strokeWidth="2" strokeLinecap="round"/><path d="M16 20h8" stroke="#7B61FF" strokeWidth="2" strokeLinecap="round"/></svg>
     ),
     text: "Get Claims Assistance",
   },
   {
     icon: (
-      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#FFF7E6"/><path d="M12 7v10M7 12h10" stroke="#FFB300" strokeWidth="2" strokeLinecap="round"/></svg>
+      <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#FFF7E6"/><g><rect x="14" y="24" width="12" height="3" rx="1.5" fill="#FFB300"/><rect x="18" y="16" width="4" height="10" rx="2" fill="#FFB300"/><rect x="16" y="14" width="8" height="3" rx="1.5" fill="#FFB300"/></g><text x="20" y="34" textAnchor="middle" fontSize="10" fill="#FFB300">TAX</text></svg>
     ),
     text: "Tax Saving Investment",
   },
   {
     icon: (
-      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#E6F7FB"/><path d="M12 7v10M7 12h10" stroke="#00B6F0" strokeWidth="2" strokeLinecap="round"/></svg>
+      <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#E6F7FB"/><path d="M14 26c2-4 10-4 12 0" stroke="#00B6F0" strokeWidth="2"/><path d="M20 14v10" stroke="#00B6F0" strokeWidth="2"/><ellipse cx="20" cy="26" rx="4" ry="2" fill="#00B6F0"/></svg>
     ),
     text: "Term Life Insurance",
   },
   {
     icon: (
-      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#E6F7FB"/><path d="M12 7v10M7 12h10" stroke="#00B6F0" strokeWidth="2" strokeLinecap="round"/></svg>
+      <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#E6F7FB"/><path d="M20 16c-2 0-6 2-6 6a6 6 0 0012 0c0-4-4-6-6-6z" fill="#FFB6B6"/><path d="M20 24v2" stroke="#FF5A5F" strokeWidth="2" strokeLinecap="round"/></svg>
     ),
     text: "Health Insurance",
   },
+];
+
+const phone1 = "https://assets.coverfox.com/static/coverfox-phone1.png";
+const phone2 = "https://assets.coverfox.com/static/coverfox-phone2.png";
+
+const boxPositions = [
+  { top: 0, left: 0, z: 40 },
+  { top: 60, left: 24, z: 30 },
+  { top: 120, left: 48, z: 20 },
+  { top: 180, left: 72, z: 10 },
 ];
 
 const AppDownload = () => (
@@ -45,7 +55,7 @@ const AppDownload = () => (
         <ul className="mb-6 space-y-2">
           {features.map((f, i) => (
             <li key={i} className="flex items-center gap-2 text-[#23235F]">
-              <svg width="18" height="18" fill="none" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14.5A6.5 6.5 0 1110 3.5a6.5 6.5 0 010 13z" fill="#B0BEC5"/><path d="M10 6.5l.94 1.91 2.11.31-1.52 1.48.36 2.1L10 11.25l-1.89.99.36-2.1-1.52-1.48 2.11-.31L10 6.5z" fill="#FFD600"/></svg>
+              <svg width="18" height="18" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" stroke="#B0BEC5" strokeWidth="2" fill="#fff"/><path d="M10 6.5l.94 1.91 2.11.31-1.52 1.48.36 2.1L10 11.25l-1.89.99.36-2.1-1.52-1.48 2.11-.31L10 6.5z" fill="#FFD600"/></svg>
               <span>{f}</span>
             </li>
           ))}
@@ -62,19 +72,30 @@ const AppDownload = () => (
       </div>
       {/* Right Side */}
       <div className="flex-1 flex items-center justify-center relative min-h-[400px]">
-        {/* Floating feature boxes */}
-        <div className="absolute left-0 top-12 flex flex-col gap-4 z-10">
+        {/* Floating feature boxes - overlapped, square */}
+        <div className="absolute left-0 top-8 w-80 h-[320px] z-30" style={{ pointerEvents: 'none' }}>
           {floatingBoxes.map((box, i) => (
-            <div key={i} className="bg-white rounded-xl shadow px-4 py-2 flex items-center gap-2 mb-2 min-w-[180px]">
-              <span>{box.icon}</span>
-              <span className="text-xs text-[#23235F] font-medium whitespace-nowrap">{box.text}</span>
+            <div
+              key={i}
+              className="bg-white rounded-2xl shadow-lg flex flex-col items-center justify-center absolute border border-[#E6ECF5] transition-all duration-300"
+              style={{
+                boxShadow: '0 4px 24px 0 #E3E8F0, 0 0 0 4px #F5F8FC',
+                top: boxPositions[i].top,
+                left: boxPositions[i].left,
+                zIndex: boxPositions[i].z,
+                width: 110,
+                height: 110,
+              }}
+            >
+              <div className="mb-2">{box.icon}</div>
+              <div className="text-center text-[#23235F] text-sm font-medium leading-tight px-2">{box.text}</div>
             </div>
           ))}
         </div>
         {/* Phone images (dummy) */}
-        <div className="flex gap-4 items-end ml-40">
-          <img src="https://i.imgur.com/6b6psnA.png" alt="App screen 1" className="h-80 w-auto rounded-2xl shadow-lg border-2 border-white z-20" />
-          <img src="https://i.imgur.com/8QfQ2Qp.png" alt="App screen 2" className="h-72 w-auto rounded-2xl shadow-lg border-2 border-white z-10 -ml-12" />
+        <div className="flex gap-4 items-end ml-32">
+          <img src={phone1} alt="App screen 1" className="h-80 w-auto rounded-2xl shadow-lg border-2 border-white z-20" />
+          <img src={phone2} alt="App screen 2" className="h-72 w-auto rounded-2xl shadow-lg border-2 border-white z-10 -ml-12" />
         </div>
       </div>
     </div>

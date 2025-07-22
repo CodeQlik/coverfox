@@ -6,6 +6,10 @@ import InfoCards from "../components/InfoCards";
 import PopularCalculators from "../components/PopularCalculators";
 import PBAdvantage from "../components/PBAdvantage";
 import AppDownload from "../components/AppDownload";
+import Testimonials from "../components/Testimonials";
+import Partners from "../components/Partners";
+import ContactHelp from "../components/ContactHelp";
+import GroupBrands from "../components/GroupBrands";
 import ClientSlider from "../components/ClientSlider";
 import ClientListing from "../components/ClientListing";
 import ServicesSlider from "../components/ServicesSlider";
@@ -14,7 +18,7 @@ export default function Home() {
   return (
     <div className="font-sans min-h-screen flex flex-col bg-background text-foreground">
       <Header />
-      <main className="flex-1 flex flex-col gap-12">
+      <main className=" gap-12">
         <Banner />
         <ServicesSlider />
         <WhyUs />
@@ -22,6 +26,10 @@ export default function Home() {
         <PopularCalculators />
         <PBAdvantage />
         <AppDownload />
+        <Testimonials />
+        <Partners />
+        <ContactHelp />
+        <GroupBrands />
         <ClientSlider />
         <ClientListing />
       </main>
