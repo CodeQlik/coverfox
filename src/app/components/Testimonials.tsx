@@ -4,11 +4,11 @@ import React, { useState } from "react";
 const testimonials = [
   {
     name: "Ananth Narayan",
-    text: "Thank you for facilitating and following up on the policy. Its been a very pleasurable experience with you folks at Policybazaar.",
+    text: "Thank you for facilitating and following up on the policy. Its been a very pleasurable experience with you folks at CoverFox.",
   },
   {
     name: "Neha Jain",
-    text: "You are doing a great job. Proud to be a customer of Policybazaar.",
+    text: "You are doing a great job. Proud to be a customer of CoverFox.",
   },
   {
     name: "Shraddha Sharma",

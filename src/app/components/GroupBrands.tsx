@@ -7,8 +7,8 @@ const brands = [
     logo: <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="pbpartners" className="h-10 w-auto rounded" />,
   },
   {
-    name: "policybazaar business",
-    logo: <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="policybazaar business" className="h-10 w-auto rounded" />,
+    name: "CoverFox business",
+    logo: <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="CoverFox business" className="h-10 w-auto rounded" />,
   },
   {
     name: "docprime",
@@ -27,8 +27,8 @@ const brands = [
     logo: <img src="https://randomuser.me/api/portraits/men/48.jpg" alt="pb" className="h-10 w-auto rounded-full" />,
   },
   {
-    name: "policybazaar ae",
-    logo: <img src="https://randomuser.me/api/portraits/women/49.jpg" alt="policybazaar ae" className="h-10 w-auto rounded" />,
+    name: "CoverFox ae",
+    logo: <img src="https://randomuser.me/api/portraits/women/49.jpg" alt="CoverFox ae" className="h-10 w-auto rounded" />,
   },
 ];
 

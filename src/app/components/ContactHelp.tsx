@@ -15,7 +15,7 @@ const ContactHelp = () => (
             </span>
             <div>
               <div className="text-gray-500 text-sm">General Enquiries</div>
-              <div className="font-bold text-[#23235F] text-lg">care@policybazaar.com</div>
+              <div className="font-bold text-[#23235F] text-lg">care@CoverFox.com</div>
             </div>
           </div>
           <div className="flex items-center gap-4 bg-white border border-gray-300 rounded-xl px-6 py-4 w-full max-w-md">

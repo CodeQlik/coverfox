@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 
 // SVG ICONS
 const FilterIcon = () => (
@@ -57,29 +58,95 @@ const alsoBuy = [
   { tag: "Others", name: "Personal Cyber Insurance" },
 ];
 
-const Banner = () => (
-  <section className="w-full bg-white py-10 px-2 sm:px-8 flex flex-col items-center">
-    <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-[2fr_1.2fr] gap-8 items-start">
-      {/* Left Side */}
-      <div className="flex flex-col gap-6">
-        <div>
-          <h1 className="text-4xl sm:text-5xl font-light text-black leading-tight">
-            Let's find you<br />
-            <span className="font-bold text-[#23235F]">the Best Insurance</span>
-          </h1>
-        </div>
-        <div className="flex flex-wrap gap-8 mt-2 items-center">
-          <div className="flex items-center gap-2">
-            <span className="inline-block align-middle"><FilterIcon /></span>
-            <span className="text-[#7B61FF] font-medium">51 insurers offering lowest prices</span>
+const promoCards = [
+  {
+    disclaimer: "*In Unit Linked Insurance Plans, the investment risk in the investment portfolio is borne by the policyholder and the returns are not guaranteed",
+    title: <><span>Invest <span className="text-[#1976D2] font-bold">₹ 10,000/month</span></span></>,
+    subtitle: <>& Get <span className="text-[#43A047] font-bold">₹ 1 Crore</span> returns<sup className="text-xs font-normal">*</sup></>,
+    badge: "In-built life cover",
+    button: "View plans",
+    emoji: "🧑‍💼",
+  },
+  {
+    disclaimer: "*Tax benefits are subject to changes in tax laws.",
+    title: <><span>Save up to <span className="text-[#1976D2] font-bold">₹ 46,800</span> in taxes</span></>,
+    subtitle: <>with <span className="text-[#43A047] font-bold">Tax Saving Plans</span></>,
+    badge: "Section 80C & 10(10D)",
+    button: "Save tax now",
+    emoji: "💸",
+  },
+  {
+    disclaimer: "*Get instant quotes from top insurers.",
+    title: <><span>Compare <span className="text-[#1976D2] font-bold">51+ insurers</span></span></>,
+    subtitle: <>for <span className="text-[#43A047] font-bold">the best price</span></>,
+    badge: "Lowest Price Guarantee",
+    button: "Compare now",
+    emoji: "🤝",
+  },
+];
+
+const Banner = () => {
+  const [promoIndex, setPromoIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPromoIndex((prev) => (prev + 1) % promoCards.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="w-full bg-white py-10 px-2 sm:px-8 flex flex-col items-center">
+      <div className="max-w-7xl w-full flex flex-col gap-8">
+        {/* Main Row: Heading/Features (left) and Promo Card (right) */}
+        <div className="w-full flex flex-col lg:flex-row items-center lg:items-stretch gap-8">
+          {/* Left Side: Heading and Features */}
+          <div className="flex-1 flex flex-col justify-center gap-6 min-w-[320px]">
+            <div>
+              <h1 className="text-4xl sm:text-5xl font-light text-black leading-tight">
+                Let's find you<br />
+                <span className="font-bold text-[#23235F]">the Best Insurance</span>
+              </h1>
+            </div>
+            <div className="flex flex-wrap gap-8 mt-2 items-center">
+              <div className="flex items-center gap-2">
+                <span className="inline-block align-middle"><FilterIcon /></span>
+                <span className="text-[#7B61FF] font-medium">51 insurers offering lowest prices</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="inline-block align-middle"><LightningIcon /></span>
+                <span className="text-[#FFA726] font-medium">Quick, easy & hassle free</span>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="inline-block align-middle"><LightningIcon /></span>
-            <span className="text-[#FFA726] font-medium">Quick, easy & hassle free</span>
+          {/* Right Side: Promo Card Slider */}
+          <div className="flex-1 flex flex-col items-center justify-center pt-2 min-w-[320px]">
+            <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-lg flex flex-col items-start relative min-h-[260px] mt-2 border border-[#E6ECF5] transition-all duration-500">
+              <div className="text-xs text-[#8A8A8A] mb-1">{promoCards[promoIndex].disclaimer}</div>
+              <div className="text-2xl font-semibold text-[#23235F] mb-1">{promoCards[promoIndex].title}</div>
+              <div className="text-xl font-semibold text-[#23235F] mb-2">{promoCards[promoIndex].subtitle}</div>
+              <button className="bg-[#E3F2FD] text-[#1976D2] font-semibold px-4 py-1 rounded-full text-xs mb-3">{promoCards[promoIndex].badge}</button>
+              <button className="bg-[#1976D2] text-white font-semibold px-6 py-2 rounded-full shadow hover:bg-blue-700 transition mb-2">{promoCards[promoIndex].button}</button>
+              {/* Emoji/image */}
+              <div className="absolute bottom-2 right-2 w-24 h-24 rounded-full overflow-hidden flex items-center justify-center bg-[#FFF7E6] border border-[#E6ECF5]">
+                <span className="text-6xl">{promoCards[promoIndex].emoji}</span>
+              </div>
+            </div>
+            {/* Dots for slider - below the card */}
+            <div className="flex gap-2 mt-4">
+              {promoCards.map((_, i) => (
+                <button
+                  key={i}
+                  className={`w-2 h-2 rounded-full ${promoIndex === i ? "bg-[#1976D2]" : "bg-[#E6ECF5]"}`}
+                  onClick={() => setPromoIndex(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
-        {/* Product Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-4">
+        {/* Product Grid below main row */}
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {products.slice(0, 12).map((p, i) => (
             <div key={p.name} className="bg-[#F7FAFE] rounded-2xl p-4 flex flex-col items-center shadow-sm min-w-[120px] border border-[#E6ECF5]">
               {p.label && (
@@ -90,45 +157,25 @@ const Banner = () => (
             </div>
           ))}
         </div>
-      </div>
-      {/* Right Side - Promo Card Slider */}
-      <div className="flex flex-col items-center justify-start pt-2">
-        <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-lg flex flex-col items-start relative min-h-[260px] mt-2 border border-[#E6ECF5]">
-          <div className="text-xs text-[#8A8A8A] mb-1">*In Unit Linked Insurance Plans, the investment risk in the investment portfolio is borne by the policyholder and the returns are not guaranteed</div>
-          <div className="text-2xl font-semibold text-[#23235F] mb-1">Invest <span className="text-[#1976D2] font-bold">₹ 10,000/month</span></div>
-          <div className="text-xl font-semibold text-[#23235F] mb-2">& Get <span className="text-[#43A047] font-bold">₹ 1 Crore</span> returns<sup className="text-xs font-normal">*</sup></div>
-          <button className="bg-[#E3F2FD] text-[#1976D2] font-semibold px-4 py-1 rounded-full text-xs mb-3">In-built life cover</button>
-          <button className="bg-[#1976D2] text-white font-semibold px-6 py-2 rounded-full shadow hover:bg-blue-700 transition mb-2">View plans</button>
-          {/* Placeholder for image */}
-          <div className="absolute bottom-2 right-2 w-24 h-24 rounded-full overflow-hidden flex items-center justify-center bg-[#FFF7E6] border border-[#E6ECF5]">
-            <span className="text-6xl">🧑‍💼</span>
+        {/* View all products and Also Buy below product grid */}
+        <div className="w-full flex flex-col items-center mt-8">
+          <button className="border border-[#1976D2] text-[#1976D2] px-6 py-2 rounded-full font-medium hover:bg-blue-50 transition mb-6">
+            View all products
+          </button>
+          <div className="w-full">
+            <div className="text-[#1976D2] font-semibold mb-3">ALSO BUY</div>
+            <div className="flex flex-wrap gap-3">
+              {alsoBuy.map((item) => (
+                <span key={item.name} className="px-4 py-2 bg-white rounded-full text-sm font-medium shadow-sm border border-[#E6ECF5] text-[#23235F] flex items-center gap-2">
+                  <span className="text-xs text-[#7B61FF]">{item.tag}</span> {item.name}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
-        {/* Dots for slider - below the card */}
-        <div className="flex gap-2 mt-4">
-          <span className="w-2 h-2 rounded-full bg-[#1976D2]"></span>
-          <span className="w-2 h-2 rounded-full bg-[#E6ECF5]"></span>
-          <span className="w-2 h-2 rounded-full bg-[#E6ECF5]"></span>
-        </div>
       </div>
-    </div>
-    {/* View all products and Also Buy below both columns */}
-    <div className="max-w-7xl w-full flex flex-col items-center mt-8">
-      <button className="border border-[#1976D2] text-[#1976D2] px-6 py-2 rounded-full font-medium hover:bg-blue-50 transition mb-6">
-        View all products
-      </button>
-      <div className="w-full">
-        <div className="text-[#1976D2] font-semibold mb-3">ALSO BUY</div>
-        <div className="flex flex-wrap gap-3">
-          {alsoBuy.map((item) => (
-            <span key={item.name} className="px-4 py-2 bg-white rounded-full text-sm font-medium shadow-sm border border-[#E6ECF5] text-[#23235F] flex items-center gap-2">
-              <span className="text-xs text-[#7B61FF]">{item.tag}</span> {item.name}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Banner; 

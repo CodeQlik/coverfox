@@ -47,7 +47,10 @@ const PBAdvantage = () => (
       <a href="#" className="text-[#1976D2] font-medium mb-10 inline-block">Know more</a>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-8">
         {features.map((f, i) => (
-          <div key={i} className="bg-white rounded-xl border border-[#E6ECF5] shadow-sm flex flex-col items-center p-6 min-h-[220px] text-center">
+          <div
+            key={i}
+            className="bg-white rounded-xl border border-[#E6ECF5] shadow-sm flex flex-col items-center p-6 min-h-[220px] text-center transition-all duration-200 hover:shadow-2xl hover:-translate-y-2 hover:border-[#1976D2] cursor-pointer"
+          >
             <div className="mb-4">{f.icon}</div>
             <div className="font-bold text-lg text-[#23235F] mb-1">{f.title}</div>
             <div className="text-gray-500 text-sm">{f.subtitle}</div>

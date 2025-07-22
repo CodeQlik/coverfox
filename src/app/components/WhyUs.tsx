@@ -4,7 +4,7 @@ const features = [
   {
     icon: "🎉",
     title: <span className="text-[#2D4BFF] font-bold">Over 9 million</span>,
-    text: "customers trust us & have bought their insurance on Policybazaar",
+    text: "customers trust us & have bought their insurance on CoverFox",
     border: "border-l-4 border-[#2D4BFF]",
   },
   {
@@ -44,7 +44,7 @@ const WhyUs = () => (
       {/* Left Side */}
       <div className="flex flex-col gap-4">
         <h2 className="text-3xl sm:text-4xl font-light text-[#23235F] leading-snug">
-          What makes <span className="font-bold text-[#23235F]">Policybazaar</span> one of<br />
+          What makes <span className="font-bold text-[#23235F]">CoverFox</span> one of<br />
           <span className="font-bold text-[#23235F]">India's favourite places</span><br />
           to <span className="font-bold text-[#23235F]">buy insurance?</span>
         </h2>
