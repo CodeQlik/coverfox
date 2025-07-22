@@ -1,11 +1,12 @@
 import React from "react";
-
+import Image from "next/image";
+import logo from "../images/logo.avif";
 const paymentMethods = [
-  { src: "https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo_%282018%29.svg", alt: "American Express" },
+  { src: logo, alt: "Coverfox Logo" },
   { src: "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png", alt: "Visa" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Paytm_logo.png", alt: "Paytm" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/8/89/RuPay.svg", alt: "RuPay" },
-  { src: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Netbanking_logo.png", alt: "Net Banking" },
+  { src: logo, alt: "Coverfox Logo" },
+  { src: logo, alt: "Coverfox Logo" },
+  { src: logo, alt: "Coverfox Logo" },
   { src: "https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png", alt: "Mastercard" },
 ];
 const socialIcons = [
@@ -82,14 +83,14 @@ const Footer = () => (
           <span className="font-semibold text-sm mb-2">Payment Methods</span>
           <div className="flex gap-2 flex-wrap">
             {paymentMethods.map((pm, i) => (
-              <img key={i} src={pm.src} alt={pm.alt} className="h-7 bg-white rounded px-1 py-0.5" />
+              <Image key={i} src={pm.src} alt={pm.alt} width={40} height={40} className="h-8 w-auto bg-white rounded px-1 py-0.5" />
             ))}
           </div>
         </div>
         {/* Secured With */}
         <div className="flex flex-col items-center">
           <span className="font-semibold text-sm mb-2">Secured With</span>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/PCI_DSS_logo.svg" alt="PCI DSS" className="h-8 bg-white rounded px-2 py-1" />
+          <Image src={logo} alt="Coverfox Logo" width={40} height={40} className="h-8 w-auto bg-white rounded px-2 py-1" />
         </div>
         {/* Social Icons */}
         <div className="flex flex-col items-center md:items-end">

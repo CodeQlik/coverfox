@@ -1,5 +1,6 @@
 import React from "react";
-
+import help from "../images/help.png";
+import Image from "next/image";
 const ContactHelp = () => (
   <section className="w-full bg-white py-20 flex flex-col items-center">
     <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between px-4 gap-8">
@@ -31,7 +32,7 @@ const ContactHelp = () => (
       </div>
       {/* Right Side */}
       <div className="flex-1 flex items-center justify-center">
-        <img src="https://assets.coverfox.com/static/coverfox-support-illustration.png" alt="Support illustration" className="max-w-md w-full h-auto" />
+        <Image src={help} alt="Support illustration" className="max-w-md w-full h-auto" />
       </div>
     </div>
   </section>

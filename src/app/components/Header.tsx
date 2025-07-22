@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
-
+import Image from "next/image";
+import logo from "../images/logo.avif";
 const navItems = [
   {
     label: "Insurance Products",
@@ -205,8 +206,7 @@ const Header = () => {
   return (
     <header className="w-full bg-white shadow flex items-center justify-between px-8 py-3 z-50 relative">
       <div className="flex items-center gap-2 text-2xl font-bold text-black">
-        <span className="text-3xl">🏢</span>
-        CoverFox
+        <Image src={logo} alt="Coverfox Logo"  className="h-10 w-auto" priority />
       </div>
       <nav className="flex items-center gap-4 relative">
         {navItems.map((item) => (

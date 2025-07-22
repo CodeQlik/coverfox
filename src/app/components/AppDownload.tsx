@@ -1,7 +1,10 @@
 "use client";
 import React, { useState } from "react";
+import app from "../images/get-app.avif";
+import Image from "next/image";
 
-const features = [
+
+  const features = [
   "Compare different insurance policies",
   "Buy, store and share all your policies online",
   "Track your policy status on the go",
@@ -39,9 +42,11 @@ const AppDownload = () => {
         {/* Right Side: Full Image */}
         <div className="flex-1 flex items-center justify-center relative min-h-[400px] w-full">
           {!imgError ? (
-            <img
-              src="/assets/images/get-app.avif"
+            <Image
+              src={app}
               alt="App screen"
+              width={500}
+              height={500}
               className=""
               onError={() => setImgError(true)}
             />
