@@ -30,6 +30,6 @@ export default function Home() {
         <GroupBrands />
       </main>
       <Footer />
-    </div>
+    </div> 
   );
 }
