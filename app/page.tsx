@@ -11,7 +11,6 @@ import Partners from "./components/Partners";
 import ContactHelp from "./components/ContactHelp";
 import GroupBrands from "./components/GroupBrands";
 import ServicesSlider from "./components/ServicesSlider";
-import Head from "next/head";
 
 export const metadata = {
   alternates: {
@@ -22,11 +21,6 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="font-sans min-h-screen flex flex-col bg-background text-foreground">
-      <Head>
-        <title>Coverfox - Best Insurance Plans Online in India</title>
-        <meta name="description" content="Compare, buy, and manage insurance policies online with Coverfox. Get the best quotes for health, term, car, and life insurance." />
-        <link rel="canonical" href="https://www.Coverfox.com/" />
-      </Head>
       <Header />
       <main className="">
         <h1 className="sr-only">Coverfox - Best Insurance Plans Online in India</h1>
