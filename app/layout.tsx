@@ -44,7 +44,7 @@ export default function RootLayout({
         <meta name="twitter:image" content="/assets/images/logo.avif" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
-        <link rel="icon" href="/fav-icon-codeqlik.jpeg" />
+        <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
