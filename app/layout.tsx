@@ -31,13 +31,13 @@ export default function RootLayout({
         <meta name="description" content="Compare, buy, and manage insurance policies online with Coverfox. Get the best quotes for health, term, car, and life insurance. 51+ insurers, 24x7 support, instant policy download." />
         <meta name="keywords" content="insurance, Coverfox, health insurance, term insurance, car insurance, life insurance, online insurance, compare insurance, buy insurance, best insurance plans, investment plans, calculators, claim, support, contact, about, company, resources, policy, renewal, advisor, investor relations, legal, admin policies, ISNP, PB Life, awards, newsroom, customer reviews, insurance companies, general insurance, travel insurance, bike insurance, motor insurance, commercial vehicle insurance, electric car insurance, e-bike insurance, IDV calculator, SIP, ULIP, pension plans, child plans, tax saving, critical illness, maternity, senior citizen, family, NRI, HLV calculator, secured, payment methods, social media, Facebook, Twitter, LinkedIn, YouTube" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.Coverfox.com/" />
+        <link rel="canonical" href="https://coverfox.vercel.app" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         {/* Open Graph tags */}
         <meta property="og:title" content="Coverfox - Best Insurance Plans Online in India" />
         <meta property="og:description" content="Compare, buy, and manage insurance policies online with Coverfox. Get the best quotes for health, term, car, and life insurance. 51+ insurers, 24x7 support, instant policy download." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.Coverfox.com/" />
+        <link rel="canonical" href="https://coverfox.vercel.app/" />
         <meta property="og:image" content="/coverfox-og.png" />
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -52,8 +52,8 @@ export default function RootLayout({
           "@context": "https://schema.org",
           "@type": "Organization",
           "name": "Coverfox",
-          "url": "https://www.Coverfox.com/",
-          "logo": "https://www.Coverfox.com/assets/images/logo.avif",
+          "url": "https://coverfox.vercel.app/",
+          "logo": "https://coverfox.vercel.app/assets/images/logo.avif",
           "sameAs": [
             "https://www.facebook.com/coverfoxinsurance",
             "https://twitter.com/coverfoxinsurance",
@@ -63,11 +63,11 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "url": "https://www.Coverfox.com/",
+          "url": "https://coverfox.vercel.app/",
           "name": "Coverfox - Best Insurance Plans Online in India",
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://www.Coverfox.com/search?q={search_term_string}",
+            "target": "https://coverfox.vercel.app/search?q={search_term_string}",
             "query-input": "required name=search_term_string"
           }
         }) }} />
