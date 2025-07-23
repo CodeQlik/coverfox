@@ -1,4 +1,9 @@
-Sitemap: https://coverfox.vercel.app/sitemap.xml
-
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://coverfox.vercel.app
+
+# Sitemaps
+Sitemap: https://coverfox.vercel.app/sitemap.xml
