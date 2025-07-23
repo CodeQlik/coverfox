@@ -44,7 +44,7 @@ export default function RootLayout({
         <meta name="twitter:image" content="/assets/images/logo.avif" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/fav-icon-codeqlik.jpeg" />
         <link rel="manifest" href="/manifest.json" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
@@ -53,9 +53,9 @@ export default function RootLayout({
           "url": "https://www.Coverfox.com/",
           "logo": "https://www.Coverfox.com/assets/images/logo.avif",
           "sameAs": [
-            "https://www.facebook.com/Coverfox",
-            "https://twitter.com/Coverfox",
-            "https://www.linkedin.com/company/coverfox"
+            "https://www.facebook.com/coverfoxinsurance",
+            "https://twitter.com/coverfoxinsurance",
+            "https://www.linkedin.com/company/coverfoxinsurance"
           ]
         }) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
