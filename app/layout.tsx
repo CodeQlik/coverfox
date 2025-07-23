@@ -37,12 +37,12 @@ export default function RootLayout({
         <meta property="og:description" content="Compare, buy, and manage insurance policies online with Coverfox. Get the best quotes for health, term, car, and life insurance. 51+ insurers, 24x7 support, instant policy download." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.Coverfox.com/" />
-        <meta property="og:image" content="/assets/images/logo.avif" />
+        <meta property="og:image" content="/coverfox-og.png" />
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Coverfox - Best Insurance Plans Online in India" />
         <meta name="twitter:description" content="Compare, buy, and manage insurance policies online with Coverfox. Get the best quotes for health, term, car, and life insurance. 51+ insurers, 24x7 support, instant policy download." />
-        <meta name="twitter:image" content="/assets/images/logo.avif" />
+        <meta name="twitter:image" content="/coverfox-og.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="icon" href="/favicon.ico" />

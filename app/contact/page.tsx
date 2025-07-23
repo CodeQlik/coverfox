@@ -1,12 +1,19 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Image from "next/image";
+import Head from "next/head";
 
 export default function Contact() {
   return (
     <div className="font-sans min-h-screen flex flex-col bg-background text-foreground">
+      <Head>
+        <title>Contact Coverfox - Customer Support & Help</title>
+        <meta name="description" content="Contact Coverfox for customer support, queries, and assistance with your insurance policies. We're here to help you 24x7." />
+        <link rel="canonical" href="https://www.Coverfox.com/contact" />
+      </Head>
       <Header />
       <main className="flex-1 w-full">
+        <h1 className="sr-only">Contact Coverfox - Customer Support & Help</h1>
         {/* Blue header section */}
         <div className="bg-blue-600 text-white py-8 px-4">
           <div className="max-w-4xl mx-auto">

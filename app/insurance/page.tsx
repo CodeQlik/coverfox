@@ -1,12 +1,19 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Image from "next/image";
+import Head from "next/head";
 
 export default function Insurance() {
   return (
     <div className="font-sans min-h-screen flex flex-col bg-background text-foreground">
+      <Head>
+        <title>Life & General Insurance Plans - Coverfox</title>
+        <meta name="description" content="Explore and compare life, health, car, and general insurance plans with Coverfox. Get instant quotes and manage your policies online." />
+        <link rel="canonical" href="https://www.Coverfox.com/insurance" />
+      </Head>
       <Header />
       <main className="flex-1 w-full bg-[#f7fafd] pb-12">
+        <h1 className="sr-only">Life & General Insurance Plans - Coverfox</h1>
         {/* Top nav and tabs (minimal for now) */}
         <div className="bg-white border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 flex flex-wrap gap-4 py-2 text-sm font-medium">
@@ -23,9 +30,9 @@ export default function Insurance() {
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-8 mt-8">
           {/* Left: Info */}
           <div className="flex-1">
-            <h1 className="text-4xl font-bold mb-2 text-[#23235F]">Life Insurance</h1>
+            <h2 className="text-4xl font-bold mb-2 text-[#23235F]">Life Insurance</h2>
             <p className="text-gray-700 mb-6">Life is unpredictable, and while we all hope for the best, being prepared is essential. Life insurance is a legal contract between you and the insurer that provides a financial safety net for your loved ones in your absence. It ensures your family can manage expenses and maintain stability during difficult times. Beyond protection, life insurance can also help you plan for long-term goals like your child&apos;s education, marriage, or retirement.</p>
-            <h2 className="text-2xl font-semibold mb-3 text-[#23235F]">Understanding Life Insurance: Definition and Meaning</h2>
+            <h3 className="text-2xl font-semibold mb-3 text-[#23235F]">Understanding Life Insurance: Definition and Meaning</h3>
             <div className="flex flex-col sm:flex-row gap-6 items-start mb-6">
               <Image src="/assets/images/family.png" alt="Family illustration" width={160} height={160} className="rounded-xl bg-blue-50" />
               <ul className="list-none space-y-3 text-gray-700 flex-1">
@@ -71,7 +78,7 @@ export default function Insurance() {
               <div className="flex items-center gap-2 mt-3">
                 <span className="text-green-600"><svg width="20" height="20" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#34D399"/></svg></span>
                 <span className="text-sm">Get Updates on WhatsApp</span>
-                    <label className="relative inline-flex items-center cursor-pointer ml-auto">
+                <label className="relative inline-flex items-center cursor-pointer ml-auto">
                   <input type="checkbox" defaultChecked className="sr-only peer" />
                   <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-400 rounded-full peer peer-checked:bg-green-400 transition-all"></div>
                   <div className="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow transform peer-checked:translate-x-4 transition-all"></div>

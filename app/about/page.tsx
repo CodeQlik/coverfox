@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Image from "next/image";
+import Head from "next/head";
 import teamBg from "@/images/team-bg.jpg";
 import team from "../images/about-us-img1.avif";
 import teamSmall from "../images/about-us-img2.avif";
@@ -9,8 +10,14 @@ import greatPlaceBadge from "../images/about-us-img4.avif";
 export default function About() {
   return (
     <div className="font-sans min-h-screen flex flex-col bg-background text-foreground">
+      <Head>
+        <title>About Coverfox - Our Story & Team</title>
+        <meta name="description" content="Learn about Coverfox, our mission, our team, and how we are making insurance simple and transparent in India." />
+        <link rel="canonical" href="https://www.Coverfox.com/about" />
+      </Head>
       <Header />
       <main className="flex-1 w-full">
+        <h1 className="sr-only">About Coverfox - Our Story & Team</h1>
         {/* Hero Section */}
         <div className="relative bg-[#23235F] min-h-[340px] flex items-center justify-center overflow-hidden">
           <Image src={greatPlaceBadge} alt="Team background" fill className="object-cover object-center opacity-60" />
@@ -19,7 +26,7 @@ export default function About() {
               <div></div>
               <Image src={greatPlaceBadge} alt="Great Place to Work Badge" width={90} height={120} className="mb-4 self-end" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-2">Finding you the best insurance since</h1>
+            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-2">Finding you the best insurance since</h2>
             <div className="text-[80px] md:text-[120px] font-extrabold text-white text-center leading-none mb-2 drop-shadow-lg">2008</div>
             <div className="flex flex-wrap gap-2 justify-center mb-4">
               <button className="px-5 py-2 rounded-full bg-white text-blue-700 font-semibold shadow hover:bg-blue-50 transition">About Company</button>
