@@ -32,10 +32,10 @@ const AppDownload = () => {
           <div className="mb-2 text-gray-500">Download our app from</div>
           <div className="flex gap-4">
             <a href="#" aria-label="Google Play">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" className="h-12 w-auto" />
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" width={150} height={48} className="h-12 w-auto" />
             </a>
             <a href="#" aria-label="App Store">
-              <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" className="h-12 w-auto" />
+              <Image src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" width={150} height={48} className="h-12 w-auto" />
             </a>
           </div>
         </div>

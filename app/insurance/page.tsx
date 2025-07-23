@@ -24,7 +24,7 @@ export default function Insurance() {
           {/* Left: Info */}
           <div className="flex-1">
             <h1 className="text-4xl font-bold mb-2 text-[#23235F]">Life Insurance</h1>
-            <p className="text-gray-700 mb-6">Life is unpredictable, and while we all hope for the best, being prepared is essential. Life insurance is a legal contract between you and the insurer that provides a financial safety net for your loved ones in your absence. It ensures your family can manage expenses and maintain stability during difficult times. Beyond protection, life insurance can also help you plan for long-term goals like your child's education, marriage, or retirement.</p>
+            <p className="text-gray-700 mb-6">Life is unpredictable, and while we all hope for the best, being prepared is essential. Life insurance is a legal contract between you and the insurer that provides a financial safety net for your loved ones in your absence. It ensures your family can manage expenses and maintain stability during difficult times. Beyond protection, life insurance can also help you plan for long-term goals like your child&apos;s education, marriage, or retirement.</p>
             <h2 className="text-2xl font-semibold mb-3 text-[#23235F]">Understanding Life Insurance: Definition and Meaning</h2>
             <div className="flex flex-col sm:flex-row gap-6 items-start mb-6">
               <Image src="/assets/images/family.png" alt="Family illustration" width={160} height={160} className="rounded-xl bg-blue-50" />
@@ -67,7 +67,7 @@ export default function Insurance() {
                 <input type="text" placeholder="Mobile Number" className="flex-1 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
               </div>
               <button className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg mt-2 hover:bg-blue-700 transition">View Term Quotes</button>
-              <div className="text-xs text-gray-500 mt-2">By clicking on "View Term Quotes" you agree to our Privacy Policy and Terms of use<br/>Tax benefit is subject to changes in tax laws</div>
+              <div className="text-xs text-gray-500 mt-2">By clicking on &quot;View Term Quotes&quot; you agree to our Privacy Policy and Terms of use<br/>Tax benefit is subject to changes in tax laws</div>
               <div className="flex items-center gap-2 mt-3">
                 <span className="text-green-600"><svg width="20" height="20" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#34D399"/></svg></span>
                 <span className="text-sm">Get Updates on WhatsApp</span>

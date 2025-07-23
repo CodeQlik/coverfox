@@ -58,7 +58,7 @@ export default function Contact() {
         </div>
         {/* Help steps section */}
         <div className="max-w-4xl mx-auto mt-12 px-4">
-          <h2 className="text-2xl font-semibold mb-6">Here's how to receive help</h2>
+          <h2 className="text-2xl font-semibold mb-6">Here&apos;s how to receive help</h2>
           <div className="bg-white rounded-xl shadow p-6 mb-6">
             <div className="flex items-center gap-4 mb-2">
               <div className="text-2xl font-bold text-blue-600">1</div>

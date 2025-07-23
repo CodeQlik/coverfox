@@ -98,7 +98,7 @@ const Footer = () => (
           <div className="flex gap-3">
             {socialIcons.map((icon, i) => (
               <a key={i} href={icon.href} target="_blank" rel="noopener noreferrer" className="bg-[#22325C] rounded p-2 hover:bg-[#1a2747] transition">
-                <img src={icon.src} alt={`Social Icon: ${icon.alt}`} className="h-5 w-5 invert" />
+                <Image src={icon.src} alt={`Social Icon: ${icon.alt}`} width={20} height={20} className="h-5 w-5 invert" />
               </a>
             ))}
           </div>
