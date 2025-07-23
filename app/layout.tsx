@@ -41,6 +41,9 @@ export const metadata: Metadata = {
   verification: {
     google: "IxABNn0_s9BhcnO_iRadEjv83LXVrIAuxr0xMFFw1HM",
   },
+  alternates: {
+    canonical: "https://coverfox.vercel.app/"
+  },
 };
 
 export default function RootLayout({

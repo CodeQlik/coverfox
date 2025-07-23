@@ -24,6 +24,11 @@ export default function Home() {
       <Header />
       <main className="">
         <h1 className="sr-only">Coverfox - Best Insurance Plans Online in India</h1>
+        <nav className="mb-4 flex gap-4">
+          <a href="/about" className="underline text-blue-700">About</a>
+          <a href="/contact" className="underline text-blue-700">Contact</a>
+          <a href="/insurance" className="underline text-blue-700">Insurance</a>
+        </nav>
         <Banner />
         <ServicesSlider />
         <WhyUs />
