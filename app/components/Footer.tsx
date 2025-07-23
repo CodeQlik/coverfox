@@ -25,54 +25,54 @@ const Footer = () => (
         <div>
           <h3 className="font-bold mb-2 text-base">Insurance</h3>
           <ul className="space-y-1 text-sm">
-            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>General Insurance</a></li>
-            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>Life Insurance</a></li>
-            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>Term Insurance</a></li>
-            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>Investment</a></li>
-            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>Health Insurance</a></li>
-            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>Other Insurance</a></li>
+            <li><a href="/insurance" className="hover:underline" rel="noopener" title="General Insurance">＋ General Insurance</a></li>
+            <li><a href="/insurance" className="hover:underline" rel="noopener" title="Life Insurance">＋ Life Insurance</a></li>
+            <li><a href="/insurance" className="hover:underline" rel="noopener" title="Term Insurance">＋ Term Insurance</a></li>
+            <li><a href="/insurance" className="hover:underline" rel="noopener" title="Investment">＋ Investment</a></li>
+            <li><a href="/insurance" className="hover:underline" rel="noopener" title="Health Insurance">＋ Health Insurance</a></li>
+            <li><a href="/insurance" className="hover:underline" rel="noopener" title="Other Insurance">＋ Other Insurance</a></li>
           </ul>
         </div>
         {/* Calculators */}
         <div>
           <h3 className="font-bold mb-2 text-base">Calculators</h3>
           <ul className="space-y-1 text-sm">
-            <li><span className="mr-2">＋</span>Investment Calculators</li>
-            <li><span className="mr-2">＋</span>Fitness Calculators</li>
-            <li>Income Tax Calculator</li>
-            <li>Term Insurance Calculator</li>
-            <li>HLV Calculator</li>
-            <li>Life Insurance Calculator</li>
-            <li>Health Insurance Calculator</li>
-            <li>Travel Insurance Calculator</li>
-            <li>Car Insurance Calculator</li>
-            <li>Bike Insurance Calculator</li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Investment Calculators">＋ Investment Calculators</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Fitness Calculators">＋ Fitness Calculators</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Income Tax Calculator">Income Tax Calculator</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Term Insurance Calculator">Term Insurance Calculator</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="HLV Calculator">HLV Calculator</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Life Insurance Calculator">Life Insurance Calculator</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Health Insurance Calculator">Health Insurance Calculator</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Travel Insurance Calculator">Travel Insurance Calculator</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Car Insurance Calculator">Car Insurance Calculator</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Bike Insurance Calculator">Bike Insurance Calculator</a></li>
           </ul>
         </div>
         {/* Resources */}
         <div>
           <h3 className="font-bold mb-2 text-base">Resources</h3>
           <ul className="space-y-1 text-sm">
-            <li>Articles</li>
-            <li>Customer reviews</li>
-            <li>Insurance companies</li>
-            <li>Newsroom</li>
-            <li>Awards</li>
-            <li>PB Life</li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Articles">Articles</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Customer reviews">Customer reviews</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Insurance companies">Insurance companies</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Newsroom">Newsroom</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Awards">Awards</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="PB Life">PB Life</a></li>
           </ul>
         </div>
         {/* Company */}
         <div>
           <h3 className="font-bold mb-2 text-base">Company</h3>
           <ul className="space-y-1 text-sm">
-            <li><a href="/about" className="hover:underline">About Us</a></li>
-            <li>Sitemap</li>
-            <li>Careers</li>
-            <li>Legal & Admin policies</li>
-            <li>ISNP</li>
-            <li><a href="/contact" className="hover:underline">Contact us</a></li>
-            <li>Verify your advisor</li>
-            <li>Investor Relations</li>
+            <li><a href="/about" className="hover:underline" rel="noopener" title="About Us">About Us</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Sitemap">Sitemap</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Careers">Careers</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Legal & Admin policies">Legal & Admin policies</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="ISNP">ISNP</a></li>
+            <li><a href="/contact" className="hover:underline" rel="noopener" title="Contact us">Contact us</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Verify your advisor">Verify your advisor</a></li>
+            <li><a href="#" className="hover:underline" rel="noopener" title="Investor Relations">Investor Relations</a></li>
           </ul>
         </div>
       </div>

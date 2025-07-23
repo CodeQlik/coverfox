@@ -115,14 +115,16 @@ const navItems = [
     content: (
       <ul className="py-2 w-64 bg-white">
         {[
-          { icon: "☂️", text: "Term Life Renewal" },
-          { icon: "💰", text: "Investment Renewal" },
-          { icon: "💗", text: "Health Renewal" },
-          { icon: "🚗", text: "Motor Renewal" },
-          { icon: "🏍️", text: "Two Wheeler Renewal" },
-          { icon: "🏠", text: "Home Insurance Renewal" },
-        ].map(({ icon, text }) => (
-          <li key={text} className="flex items-center gap-2 px-4 py-2 rounded transition hover:bg-blue-50 text-black hover:text-black cursor-pointer">{icon} {text}</li>
+          { icon: "☂️", text: "Term Life Renewal", href: "/insurance" },
+          { icon: "💰", text: "Investment Renewal", href: "/insurance" },
+          { icon: "💗", text: "Health Renewal", href: "/insurance" },
+          { icon: "🚗", text: "Motor Renewal", href: "/insurance" },
+          { icon: "🏍️", text: "Two Wheeler Renewal", href: "/insurance" },
+          { icon: "🏠", text: "Home Insurance Renewal", href: "/insurance" },
+        ].map(({ icon, text, href }) => (
+          <li key={text} className="flex items-center gap-2 px-4 py-2 rounded transition hover:bg-blue-50 text-black hover:text-black cursor-pointer">
+            <a href={href}>{icon} {text}</a>
+          </li>
         ))}
       </ul>
     ),
@@ -133,12 +135,14 @@ const navItems = [
     content: (
       <ul className="py-2 w-64 bg-white">
         {[
-          "File a new claim",
-          "Claim is already filed with the Insurer",
-          "Know more about filing claim",
-          "Track existing claim",
-        ].map((text) => (
-          <li key={text} className="px-4 py-2 rounded transition hover:bg-blue-50 text-black hover:text-black cursor-pointer">{text}</li>
+          { text: "File a new claim", href: "/insurance" },
+          { text: "Claim is already filed with the Insurer", href: "/insurance" },
+          { text: "Know more about filing claim", href: "/about" },
+          { text: "Track existing claim", href: "/contact" },
+        ].map(({ text, href }) => (
+          <li key={text} className="px-4 py-2 rounded transition hover:bg-blue-50 text-black hover:text-black cursor-pointer">
+            <a href={href}>{text}</a>
+          </li>
         ))}
       </ul>
     ),
@@ -258,6 +262,9 @@ const Header = () => {
             )}
           </div>
         ))}
+        <a href="/about" className="px-3 py-2 font-medium hover:text-black text-black transition">About</a>
+        <a href="/contact" className="px-3 py-2 font-medium hover:text-black text-black transition">Contact Us</a>
+        <a href="/insurance" className="px-3 py-2 font-medium hover:text-black text-black transition">Insurance</a>
       </nav>
       <div className="flex items-center gap-3">
         <button className="flex items-center gap-2 border border-black text-black px-4 py-2 rounded-full font-medium hover:bg-blue-50 hover:text-black transition">

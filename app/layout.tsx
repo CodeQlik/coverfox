@@ -28,9 +28,10 @@ export default function RootLayout({
       <Head>
         <title>Coverfox - Best Insurance Plans Online in India</title>
         <meta name="description" content="Compare, buy, and manage insurance policies online with Coverfox. Get the best quotes for health, term, car, and life insurance. 51+ insurers, 24x7 support, instant policy download." />
-        <meta name="keywords" content="insurance, Coverfox, health insurance, term insurance, car insurance, life insurance, online insurance, compare insurance, buy insurance, best insurance plans" />
+        <meta name="keywords" content="insurance, Coverfox, health insurance, term insurance, car insurance, life insurance, online insurance, compare insurance, buy insurance, best insurance plans, investment plans, calculators, claim, support, contact, about, company, resources, policy, renewal, advisor, investor relations, legal, admin policies, ISNP, PB Life, awards, newsroom, customer reviews, insurance companies, general insurance, travel insurance, bike insurance, motor insurance, commercial vehicle insurance, electric car insurance, e-bike insurance, IDV calculator, SIP, ULIP, pension plans, child plans, tax saving, critical illness, maternity, senior citizen, family, NRI, HLV calculator, secured, payment methods, social media, Facebook, Twitter, LinkedIn, YouTube" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.Coverfox.com/" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         {/* Open Graph tags */}
         <meta property="og:title" content="Coverfox - Best Insurance Plans Online in India" />
         <meta property="og:description" content="Compare, buy, and manage insurance policies online with Coverfox. Get the best quotes for health, term, car, and life insurance. 51+ insurers, 24x7 support, instant policy download." />
