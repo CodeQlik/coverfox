@@ -42,6 +42,33 @@ export default function RootLayout({
         <meta name="twitter:title" content="Coverfox - Best Insurance Plans Online in India" />
         <meta name="twitter:description" content="Compare, buy, and manage insurance policies online with Coverfox. Get the best quotes for health, term, car, and life insurance. 51+ insurers, 24x7 support, instant policy download." />
         <meta name="twitter:image" content="/assets/images/logo.avif" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Coverfox",
+          "url": "https://www.Coverfox.com/",
+          "logo": "https://www.Coverfox.com/assets/images/logo.avif",
+          "sameAs": [
+            "https://www.facebook.com/Coverfox",
+            "https://twitter.com/Coverfox",
+            "https://www.linkedin.com/company/coverfox"
+          ]
+        }) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "https://www.Coverfox.com/",
+          "name": "Coverfox - Best Insurance Plans Online in India",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.Coverfox.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }) }} />
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
