@@ -25,12 +25,12 @@ const Footer = () => (
         <div>
           <h3 className="font-bold mb-2 text-base">Insurance</h3>
           <ul className="space-y-1 text-sm">
-            <li><span className="mr-2">＋</span>General Insurance</li>
-            <li><span className="mr-2">＋</span>Life Insurance</li>
-            <li><span className="mr-2">＋</span>Term Insurance</li>
-            <li><span className="mr-2">＋</span>Investment</li>
-            <li><span className="mr-2">＋</span>Health Insurance</li>
-            <li><span className="mr-2">＋</span>Other Insurance</li>
+            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>General Insurance</a></li>
+            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>Life Insurance</a></li>
+            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>Term Insurance</a></li>
+            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>Investment</a></li>
+            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>Health Insurance</a></li>
+            <li><a href="/insurance" className="hover:underline"><span className="mr-2">＋</span>Other Insurance</a></li>
           </ul>
         </div>
         {/* Calculators */}
@@ -65,12 +65,12 @@ const Footer = () => (
         <div>
           <h3 className="font-bold mb-2 text-base">Company</h3>
           <ul className="space-y-1 text-sm">
-            <li>About Us</li>
+            <li><a href="/about" className="hover:underline">About Us</a></li>
             <li>Sitemap</li>
             <li>Careers</li>
             <li>Legal & Admin policies</li>
             <li>ISNP</li>
-            <li>Contact us</li>
+            <li><a href="/contact" className="hover:underline">Contact us</a></li>
             <li>Verify your advisor</li>
             <li>Investor Relations</li>
           </ul>
@@ -83,14 +83,14 @@ const Footer = () => (
           <span className="font-semibold text-sm mb-2">Payment Methods</span>
           <div className="flex gap-2 flex-wrap">
             {paymentMethods.map((pm, i) => (
-              <Image key={i} src={pm.src} alt={pm.alt} width={40} height={40} className="h-8 w-auto bg-white rounded px-1 py-0.5" />
+              <Image key={i} src={pm.src} alt={`Payment Method: ${pm.alt}${pm.alt === 'Coverfox Logo' ? ' ' + (i+1) : ''}`} width={40} height={40} className="h-8 w-auto bg-white rounded px-1 py-0.5" />
             ))}
           </div>
         </div>
         {/* Secured With */}
         <div className="flex flex-col items-center">
           <span className="font-semibold text-sm mb-2">Secured With</span>
-          <Image src={logo} alt="Coverfox Logo" width={40} height={40} className="h-8 w-auto bg-white rounded px-2 py-1" />
+          <Image src={logo} alt="Secured With: Coverfox Logo" width={40} height={40} className="h-8 w-auto bg-white rounded px-2 py-1" />
         </div>
         {/* Social Icons */}
         <div className="flex flex-col items-center md:items-end">
@@ -98,7 +98,7 @@ const Footer = () => (
           <div className="flex gap-3">
             {socialIcons.map((icon, i) => (
               <a key={i} href={icon.href} target="_blank" rel="noopener noreferrer" className="bg-[#22325C] rounded p-2 hover:bg-[#1a2747] transition">
-                <img src={icon.src} alt={icon.alt} className="h-5 w-5 invert" />
+                <img src={icon.src} alt={`Social Icon: ${icon.alt}`} className="h-5 w-5 invert" />
               </a>
             ))}
           </div>

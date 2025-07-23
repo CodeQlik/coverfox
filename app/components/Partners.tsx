@@ -10,7 +10,7 @@ const Partners = () => (
       <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-6">
         {Array.from({ length: 42 }).map((_, i) => (
           <div key={i} className="bg-white rounded-lg shadow-sm flex items-center justify-center p-4">
-            <Image src={logo} alt="Partner Logo" className="h-10 w-auto" />
+            <Image src={logo} alt={`Partner Logo ${i+1}`} className="h-10 w-auto" />
           </div>
         ))}
       </div>

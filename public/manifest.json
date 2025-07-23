@@ -7,14 +7,14 @@
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "/logo.avif",
+      "src": "/favicon-192x192.png",
       "sizes": "192x192",
-      "type": "image/avif"
+      "type": "image/png"
     },
     {
-      "src": "/logo.avif",
+      "src": "/favicon-512x512.png",
       "sizes": "512x512",
-      "type": "image/avif"
+      "type": "image/png"
     }
   ]
 } 

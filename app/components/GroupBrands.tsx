@@ -4,7 +4,7 @@ import Image from "next/image";
 import logo from "../images/logo.avif";
 
 const brands = Array.from({ length: 7 }).map((_, i) => ({
-  logo: <Image src={logo} alt="Group Brand Logo"  className="w-auto" />,
+  logo: <Image src={logo} alt={`Group Brand Logo ${i+1}`}  className="w-auto" />,
 }));
 
 const GroupBrands = () => (
