@@ -13,6 +13,12 @@ import GroupBrands from "./components/GroupBrands";
 import ServicesSlider from "./components/ServicesSlider";
 import Head from "next/head";
 
+export const metadata = {
+  alternates: {
+    canonical: "https://coverfox.vercel.app/"
+  }
+};
+
 export default function Home() {
   return (
     <div className="font-sans min-h-screen flex flex-col bg-background text-foreground">
