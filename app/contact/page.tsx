@@ -3,6 +3,12 @@ import Footer from "../components/Footer";
 import Image from "next/image";
 import Head from "next/head";
 
+export const metadata = {
+  alternates: {
+    canonical: "https://coverfox.vercel.app/contact"
+  }
+};
+
 export default function Contact() {
   return (
     <div className="font-sans min-h-screen flex flex-col bg-background text-foreground">

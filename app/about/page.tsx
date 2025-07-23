@@ -7,6 +7,12 @@ import team from "../images/about-us-img1.avif";
 import teamSmall from "../images/about-us-img2.avif";
 import greatPlaceBadge from "../images/about-us-img4.avif";
 
+export const metadata = {
+  alternates: {
+    canonical: "https://coverfox.vercel.app/about"
+  }
+};
+
 export default function About() {
   return (
     <div className="font-sans min-h-screen flex flex-col bg-background text-foreground">
