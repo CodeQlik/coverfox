@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function BikeInsuranceForm() {
+export default function BikeInsuranceForm({ fullWidth = false }: { fullWidth?: boolean }) {
   const router = useRouter();
   const [mode, setMode] = useState<"reg" | "noReg">("reg");
   const [reg, setReg] = useState("");
@@ -26,7 +26,7 @@ export default function BikeInsuranceForm() {
   };
 
   return (
-    <section className="mx-auto max-w-4xl bg-white/90 shadow-lg rounded-xl p-6 border">
+    <section className={`mx-auto ${fullWidth ? "w-full max-w-7xl" : "max-w-4xl"} bg-white/90 shadow-lg rounded-xl p-6 border`}>
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">Upto 85% Off on Bike Insurance. Renew in 3 minutes</h2>
 
       {mode === "reg" ? (

@@ -27,8 +27,8 @@ export default function Home() {
         <h1 className="sr-only">Coverfox - Best Insurance Plans Online in India</h1>
         <Banner />
         {/* Bike Insurance quick form */}
-        <div className="px-4 md:px-8 lg:px-12 py-8">
-          <BikeInsuranceForm />
+        <div className="w-full py-8 px-2 sm:px-8 flex justify-center">
+          <BikeInsuranceForm fullWidth />
         </div>
         <ServicesSlider />
         <WhyUs />

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import BikeInsuranceForm from "./BikeInsuranceForm";
 
 // SVG ICONS
 const FilterIcon = () => (
@@ -97,6 +98,7 @@ const Banner = () => {
 
   return (
     <section className="w-full bg-white py-10 px-2 sm:px-8 flex flex-col items-center">
+          <BikeInsuranceForm fullWidth />
       <div className="max-w-7xl w-full flex flex-col gap-8">
         {/* Main Row: Heading/Features (left) and Promo Card (right) */}
         <div className="w-full flex flex-col lg:flex-row items-center lg:items-stretch gap-8">
@@ -145,6 +147,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
+       
         {/* Product Grid below main row */}
         <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {products.slice(0, 12).map((p, i) => (
