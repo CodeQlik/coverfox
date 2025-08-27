@@ -1,6 +1,7 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import PurchaseForm from "../../components/PurchaseForm";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Buy Bike Insurance | Coverfox",
@@ -13,7 +14,9 @@ export default function BikeInsuranceBuyPage() {
     <div className="font-sans min-h-screen flex flex-col bg-background text-foreground">
       <Header />
       <main className="px-4 md:px-8 lg:px-12 py-8 space-y-6">
-        <PurchaseForm />
+        <Suspense fallback={<div className="text-sm text-gray-500">Loading form…</div>}>
+          <PurchaseForm />
+        </Suspense>
       </main>
       <Footer />
     </div>

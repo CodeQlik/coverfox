@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Providers from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,6 @@ export const metadata: Metadata = {
     images: ["/coverfox-og.png"],
   },
   robots: "index, follow",
-  viewport: "width=device-width, initial-scale=1",
   icons: {
     icon: "/favicon.ico",
   },
@@ -44,6 +44,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://coverfox.vercel.app/"
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -56,7 +61,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

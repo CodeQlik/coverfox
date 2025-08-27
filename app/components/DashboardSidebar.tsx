@@ -45,8 +45,8 @@ export default function DashboardSidebar({
   const activeStyle = accentClasses[accent] || accentClasses.orange;
 
   return (
-    <aside className="hidden lg:block w-64 shrink-0">
-      <div className="sticky top-6 bg-white border border-gray-200 rounded-xl shadow-sm p-3">
+    <aside className="hidden lg:block w-72 shrink-0">
+      <div className="sticky top-6 bg-white border border-gray-200 rounded-xl shadow-sm p-3 h-[calc(100vh-7rem)] overflow-y-auto">
         <nav className="space-y-1">
           {menu.map(({ href, label, icon }) => {
             const active = pathname === href || pathname.startsWith(href + "/");

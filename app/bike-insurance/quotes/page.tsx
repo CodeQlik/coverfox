@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import QuotesGrid from "../../components/QuotesGrid";
@@ -17,7 +18,9 @@ export default function BikeInsuranceQuotesPage() {
           <div className="text-sm text-gray-600">Royal Enfield Classic 500 | 499 CC</div>
           <div className="text-xs text-gray-500">Policy Expired • Edit</div>
         </div>
-        <QuotesGrid />
+        <Suspense fallback={<div>Loading quotes...</div>}>
+          <QuotesGrid />
+        </Suspense>
       </main>
       <Footer />
     </div>

@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+
 import Image from "next/image";
 import logo from "../images/logo.avif";
 const navItems = [
@@ -211,6 +212,46 @@ const navItems = [
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [user, setUser] = useState<{ name?: string; email?: string } | null>(null);
+  const [role, setRole] = useState<string | null>(null);
+
+  useEffect(() => {
+    // parse cookies for cf_user and cf_role
+    const map = Object.fromEntries(
+      document.cookie.split("; ").map((c) => {
+        const idx = c.indexOf("=");
+        return [decodeURIComponent(c.slice(0, idx)), decodeURIComponent(c.slice(idx + 1))];
+      })
+    );
+    const roleCookie = map["cf_role"];
+    setRole(roleCookie || null);
+    const raw = map["cf_user"];
+    if (raw) {
+      try {
+        setUser(JSON.parse(raw));
+      } catch {
+        setUser(null);
+      }
+    }
+  }, []);
+
+  const roleRoute = useMemo(() => {
+    const routes: Record<string, string> = {
+      admin: "/dashboard/admin",
+      user: "/dashboard/user",
+      seo: "/dashboard/seo",
+      agent: "/dashboard/agent",
+    };
+    return role ? routes[role] || "/dashboard/user" : "/dashboard";
+  }, [role]);
+
+  const logout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+      // Refresh to reflect logged-out header
+      window.location.href = "/";
+    } catch {}
+  };
 
   const handleMenu = (label: string) => {
     setOpenMenu(openMenu === label ? null : label);
@@ -272,9 +313,20 @@ const Header = () => {
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M2 8.5C2 7.12 3.12 6 4.5 6h15A2.5 2.5 0 0122 8.5v7A2.5 2.5 0 0119.5 18h-15A2.5 2.5 0 012 15.5v-7z" /><path strokeLinecap="round" strokeLinejoin="round" d="M6 10h.01M12 14h.01M18 10h.01" /></svg>
           Talk to Expert
         </button>
-        <a href="/login" className="border border-black text-black px-4 py-2 rounded-full font-medium hover:bg-blue-50 hover:text-black transition">
-          Sign in
-        </a>
+        {user && role ? (
+          <div className="flex items-center gap-2">
+            <a href={roleRoute} className="px-3 py-1.5 rounded-full border text-sm">
+              {(user.name || "G").charAt(0).toUpperCase()} · {role.toUpperCase()}
+            </a>
+            <button onClick={logout} className="border border-black text-black px-4 py-2 rounded-full font-medium hover:bg-blue-50 transition">
+              Logout
+            </button>
+          </div>
+        ) : (
+          <a href="/login" className="border border-black text-black px-4 py-2 rounded-full font-medium hover:bg-blue-50 hover:text-black transition">
+            Sign in
+          </a>
+        )}
       </div>
     </header>
   );

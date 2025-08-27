@@ -10,9 +10,9 @@ export default function SEOLayout({ children }: { children: React.ReactNode }) {
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[16rem_1fr] gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr] gap-6">
       <DashboardSidebar items={items} accent="blue" />
-      <main className="min-h-[60vh]">{children}</main>
+      <main className="min-h-[calc(100vh-9rem)]">{children}</main>
     </div>
   );
 }

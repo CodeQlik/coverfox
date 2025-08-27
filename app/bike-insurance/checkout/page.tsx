@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CheckoutClient from "../../components/CheckoutClient";
@@ -12,7 +13,9 @@ export default function BikeInsuranceCheckoutPage() {
   return (
     <div className="font-sans min-h-screen flex flex-col bg-background text-foreground">
       <Header />
-      <CheckoutClient />
+      <Suspense fallback={<main className="px-4 md:px-6 lg:px-8 py-8">Loading checkout...</main>}>
+        <CheckoutClient />
+      </Suspense>
       <Footer />
     </div>
   );

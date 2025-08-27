@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import LogoutButton from "../components/LogoutButton";
+import NotificationBell from "../components/NotificationBell";
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const jar = await cookies();
@@ -10,7 +11,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   return (
     <div className="px-4 md:px-6 lg:px-8 py-6 bg-gray-50 min-h-[80vh]">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-none">
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 md:p-5 mb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="h-9 w-9 rounded-full bg-gray-100 border flex items-center justify-center text-sm font-semibold text-gray-700">
@@ -23,6 +24,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
           </div>
           <div className="flex items-center gap-3">
             <span className="px-2.5 py-1 text-xs rounded-full bg-gray-100 border">Role: <span className="font-medium">{role.toUpperCase()}</span></span>
+            <NotificationBell role={role} />
             <LogoutButton />
           </div>
         </div>
