@@ -28,6 +28,7 @@ export default function Home() {
           <a href="/about" className="underline text-blue-700">About</a>
           <a href="/contact" className="underline text-blue-700">Contact</a>
           <a href="/insurance" className="underline text-blue-700">Insurance</a>
+          <a href="/bike-insurance" className="underline text-blue-700">Bike Insurance</a>
         </nav>
         <Banner />
         <ServicesSlider />
