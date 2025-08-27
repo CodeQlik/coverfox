@@ -195,14 +195,15 @@ export default function PurchaseForm() {
               {/* Premium details */}
               <div className="mt-4 border-t pt-4 space-y-2 text-sm">
                 {(() => {
-                  const totalNum = Number(total || 0);
-                  const gst = Math.round(totalNum * 0.18);
-                  const net = Math.max(totalNum - gst, 0);
+                  // Total passed from quotes is treated as subtotal (pre-GST)
+                  const subtotal = Number(total || 0);
+                  const gst = Math.round(subtotal * 0.18);
+                  const final = Math.max(subtotal + gst, 0);
                   return (
                     <>
-                      <div className="flex items-center justify-between"><span className="text-gray-600">Net premium</span><span>₹ {net.toLocaleString("en-IN")}</span></div>
-                      <div className="flex items-center justify-between"><span className="text-gray-600">GST</span><span>₹ {gst.toLocaleString("en-IN")}</span></div>
-                      <div className="flex items-center justify-between font-semibold text-gray-900 border-t pt-2"><span>Final premium</span><span>₹ {totalNum.toLocaleString("en-IN")}</span></div>
+                      <div className="flex items-center justify-between"><span className="text-gray-600">Net premium</span><span>₹ {subtotal.toLocaleString("en-IN")}</span></div>
+                      <div className="flex items-center justify-between"><span className="text-gray-600">GST (18%)</span><span>₹ {gst.toLocaleString("en-IN")}</span></div>
+                      <div className="flex items-center justify-between font-semibold text-gray-900 border-t pt-2"><span>Final premium</span><span>₹ {final.toLocaleString("en-IN")}</span></div>
                     </>
                   );
                 })()}

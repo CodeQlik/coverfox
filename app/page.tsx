@@ -11,6 +11,7 @@ import Partners from "./components/Partners";
 import ContactHelp from "./components/ContactHelp";
 import GroupBrands from "./components/GroupBrands";
 import ServicesSlider from "./components/ServicesSlider";
+import BikeInsuranceForm from "./components/BikeInsuranceForm";
 
 export const metadata = {
   alternates: {
@@ -25,6 +26,10 @@ export default function Home() {
       <main className="">
         <h1 className="sr-only">Coverfox - Best Insurance Plans Online in India</h1>
         <Banner />
+        {/* Bike Insurance quick form */}
+        <div className="px-4 md:px-8 lg:px-12 py-8">
+          <BikeInsuranceForm />
+        </div>
         <ServicesSlider />
         <WhyUs />
         <InfoCards />
