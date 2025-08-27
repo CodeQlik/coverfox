@@ -1,11 +1,12 @@
 import DashboardSidebar, { SidebarItem } from "../../components/DashboardSidebar";
+import { FiGrid, FiUsers, FiFileText, FiSettings } from "react-icons/fi";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const items: SidebarItem[] = [
-    { label: "Overview", href: "/dashboard/admin", icon: "📊" },
-    { label: "Users", href: "/dashboard/admin/users", icon: "👥" },
-    { label: "Policies", href: "/dashboard/admin/policies", icon: "📑" },
-    { label: "Settings", href: "/dashboard/admin/settings", icon: "⚙️" },
+    { label: "Overview", href: "/dashboard/admin", icon: <FiGrid /> },
+    { label: "Users", href: "/dashboard/admin/users", icon: <FiUsers /> },
+    { label: "Policies", href: "/dashboard/admin/policies", icon: <FiFileText /> },
+    { label: "Settings", href: "/dashboard/admin/settings", icon: <FiSettings /> },
   ];
 
   return (

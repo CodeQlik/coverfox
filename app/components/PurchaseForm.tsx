@@ -118,7 +118,7 @@ export default function PurchaseForm() {
           <div>
             <label className="block text-sm font-medium text-gray-700">Mobile Number</label>
             <input required className="w-full border rounded-md px-3 py-2" placeholder="10-digit mobile" value={mobile} onChange={(e)=>setMobile(e.target.value)} />
-            <div className="text-xs text-red-500 mt-1">Oh, we can't proceed without this information. Do your bit?</div>
+            <div className="text-xs text-red-500 mt-1">Oh, we can&apos;t proceed without this information. Do your bit?</div>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Email Address</label>

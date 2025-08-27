@@ -15,7 +15,7 @@ export default async function DashboardIndex() {
   return (
     <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
       <h1 className="text-lg font-semibold mb-2">Dashboard</h1>
-      <p className="text-sm text-gray-600 mb-4">You're logged in as <span className="font-medium">{role.toUpperCase()}</span>.</p>
+      <p className="text-sm text-gray-600 mb-4">You&apos;re logged in as <span className="font-medium">{role.toUpperCase()}</span>.</p>
       <Link href={target} className="inline-block bg-orange-500 hover:bg-orange-600 text-white rounded-md px-4 py-2">Go to your panel</Link>
     </div>
   );
