@@ -98,7 +98,13 @@ const Banner = () => {
 
   return (
     <section className="w-full bg-white py-10 px-2 sm:px-8 flex flex-col items-center">
-          <BikeInsuranceForm fullWidth />
+              <h1 className="text-4xl sm:text-5xl font-light text-black mt-3">
+              Insurance is the bridge between risk or
+                <span className="font-bold text-[#23235F]"> peace of mind.</span>
+              </h1>
+         <div className="py-8">
+         <BikeInsuranceForm  />
+         </div>
       <div className="max-w-7xl w-full flex flex-col gap-8">
         {/* Main Row: Heading/Features (left) and Promo Card (right) */}
         <div className="w-full flex flex-col lg:flex-row items-center lg:items-stretch gap-8">
