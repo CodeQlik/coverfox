@@ -1,5 +1,6 @@
-import DashboardSidebar, { SidebarItem } from "../../components/DashboardSidebar";
-import { FiBriefcase, FiBook, FiPlusCircle, FiDollarSign } from "react-icons/fi";
+import { SidebarItem } from "../../components/DashboardSidebar";
+import DashboardTwoCol from "../components/DashboardTwoCol";
+import { FiBriefcase, FiBook, FiPlusCircle, FiDollarSign, FiUserCheck } from "react-icons/fi";
 
 export default function AgentLayout({ children }: { children: React.ReactNode }) {
   const items: SidebarItem[] = [
@@ -7,12 +8,8 @@ export default function AgentLayout({ children }: { children: React.ReactNode })
     { label: "Leads", href: "/dashboard/agent/leads", icon: <FiBook /> },
     { label: "Create Quote", href: "/dashboard/agent/quotes", icon: <FiPlusCircle /> },
     { label: "Commissions", href: "/dashboard/agent/commissions", icon: <FiDollarSign /> },
+    { label: "KYC", href: "/dashboard/agent/kyc", icon: <FiUserCheck /> },
   ];
 
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr] gap-6">
-      <DashboardSidebar items={items} accent="orange" />
-      <main className="min-h-[calc(100vh-9rem)]">{children}</main>
-    </div>
-  );
+  return <DashboardTwoCol items={items} accent="orange">{children}</DashboardTwoCol>;
 }

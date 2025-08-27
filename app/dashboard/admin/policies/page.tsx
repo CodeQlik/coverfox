@@ -1,58 +1,75 @@
+"use client";
+import { Box, SimpleGrid, Flex, Text, Badge, IconButton } from "@chakra-ui/react";
+import { Table, Tooltip } from "@chakra-ui/react";
+
 export default function AdminPoliciesPage() {
   const rows = [
     { id: "POL12345", user: "Jane Doe", product: "Bike", status: "Active", premium: 2450 },
     { id: "POL67890", user: "Mark Ray", product: "Health", status: "Expired", premium: 12450 },
   ];
   const totalPremium = rows.reduce((s, r) => s + r.premium, 0);
-  return (
-    <div className="space-y-6">
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
-          <div className="text-xs text-gray-500">Total Policies</div>
-          <div className="text-2xl font-semibold">{rows.length}</div>
-        </div>
-        <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
-          <div className="text-xs text-gray-500">Active</div>
-          <div className="text-2xl font-semibold">{rows.filter(r=>r.status==='Active').length}</div>
-        </div>
-        <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
-          <div className="text-xs text-gray-500">Premium (₹)</div>
-          <div className="text-2xl font-semibold">{totalPremium.toLocaleString()}</div>
-        </div>
-      </section>
 
-      <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
-        <h2 className="text-lg font-semibold mb-4">Policies</h2>
-        <div className="overflow-auto">
-          <table className="min-w-full text-sm">
-            <thead>
-              <tr className="text-left text-gray-600 border-b">
-                <th className="py-2 pr-4">Policy ID</th>
-                <th className="py-2 pr-4">User</th>
-                <th className="py-2 pr-4">Product</th>
-                <th className="py-2 pr-4">Status</th>
-                <th className="py-2 pr-4">Premium</th>
-                <th className="py-2 pr-4">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
+  return (
+    <Box display="flex" flexDirection="column" gap={3}>
+      <SimpleGrid columns={{ base: 1, md: 3 }} gap={4}>
+        <StatCard label="Total Policies" value={rows.length} />
+        <StatCard label="Active" value={rows.filter(r=>r.status==='Active').length} />
+        <StatCard label="Premium (₹)" value={totalPremium} isCurrency />
+      </SimpleGrid>
+
+      <Box bg="white" borderWidth="1px" borderColor="gray.200" rounded="xl" shadow="sm" p={4}>
+        <Text fontSize="lg" fontWeight="semibold" mb={3}>Policies</Text>
+        <Box overflowX="auto">
+          <Table.Root size="sm">
+            <Table.Header>
+              <Table.Row>
+                <Table.ColumnHeader>Policy ID</Table.ColumnHeader>
+                <Table.ColumnHeader>User</Table.ColumnHeader>
+                <Table.ColumnHeader>Product</Table.ColumnHeader>
+                <Table.ColumnHeader>Status</Table.ColumnHeader>
+                <Table.ColumnHeader>Premium</Table.ColumnHeader>
+                <Table.ColumnHeader textAlign="end">Actions</Table.ColumnHeader>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
               {rows.map((r) => (
-                <tr key={r.id} className="border-b last:border-0">
-                  <td className="py-2 pr-4 font-medium">{r.id}</td>
-                  <td className="py-2 pr-4">{r.user}</td>
-                  <td className="py-2 pr-4">{r.product}</td>
-                  <td className="py-2 pr-4"><span className={`px-2 py-1 rounded text-xs ${r.status === 'Active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'}`}>{r.status}</span></td>
-                  <td className="py-2 pr-4">₹ {r.premium.toLocaleString()}</td>
-                  <td className="py-2 pr-4">
-                    <button className="border rounded px-3 py-1 mr-2">View</button>
-                    <button className="border rounded px-3 py-1">Change Status</button>
-                  </td>
-                </tr>
+                <Table.Row key={r.id}>
+                  <Table.Cell fontWeight="medium">{r.id}</Table.Cell>
+                  <Table.Cell>{r.user}</Table.Cell>
+                  <Table.Cell>{r.product}</Table.Cell>
+                  <Table.Cell>
+                    <Badge colorScheme={r.status === 'Active' ? 'green' : 'gray'} variant="subtle">{r.status}</Badge>
+                  </Table.Cell>
+                  <Table.Cell>₹ {r.premium.toLocaleString()}</Table.Cell>
+                  <Table.Cell textAlign="end">
+                    <Tooltip.Root>
+                      <Tooltip.Trigger asChild>
+                        <IconButton aria-label="view" size="sm" variant="outline" mr={2}><span>👁️</span></IconButton>
+                      </Tooltip.Trigger>
+                      <Tooltip.Content>View</Tooltip.Content>
+                    </Tooltip.Root>
+                    <Tooltip.Root>
+                      <Tooltip.Trigger asChild>
+                        <IconButton aria-label="change status" size="sm" variant="outline"><span>✏️</span></IconButton>
+                      </Tooltip.Trigger>
+                      <Tooltip.Content>Change Status</Tooltip.Content>
+                    </Tooltip.Root>
+                  </Table.Cell>
+                </Table.Row>
               ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </div>
+            </Table.Body>
+          </Table.Root>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
+function StatCard({ label, value, isCurrency = false }: { label: string; value: number; isCurrency?: boolean }) {
+  return (
+    <Flex direction="column" bg="white" borderWidth="1px" borderColor="gray.200" rounded="xl" shadow="sm" p={4}>
+      <Text fontSize="xs" color="gray.500">{label}</Text>
+      <Text fontSize="2xl" fontWeight="semibold">{isCurrency ? value.toLocaleString() : value}</Text>
+    </Flex>
   );
 }

@@ -5,6 +5,8 @@ import { useState } from "react";
 export default function PurchaseForm() {
   const sp = useSearchParams();
   const reg = sp.get("reg") ?? "";
+  const bikeModel = sp.get("bikeModel") ?? "";
+  const rto = sp.get("rto") ?? "";
   const planId = sp.get("planId") ?? "";
   const total = sp.get("total") ?? "";
   const planName = sp.get("planName") ?? "";
@@ -42,6 +44,8 @@ export default function PurchaseForm() {
     e.preventDefault();
     const params = new URLSearchParams({
       reg,
+      bikeModel,
+      rto,
       planId,
       planName,
       total,
@@ -68,30 +72,33 @@ export default function PurchaseForm() {
   };
 
   return (
-    <section className="mx-auto max-w-3xl">
-      <div className="bg-white border rounded-xl shadow-sm p-4 mb-4 flex items-center justify-between">
-        <div>
-          <div className="text-xs text-gray-500">REGISTRATION NUMBER</div>
-          <div className="font-medium">{reg || "-"}</div>
-        </div>
-        <div className="text-right">
-          <div className="text-xs text-gray-500">SELECTED PLAN</div>
-          <div className="font-medium">{planId || "-"}</div>
-        </div>
-      </div>
+    <section className="mx-auto max-w-6xl">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Left: steps and forms */}
+        <div className="lg:col-span-8 space-y-4">
+          <div className="bg-white border rounded-xl shadow-sm p-4 flex items-center justify-between">
+            <div>
+              <div className="text-xs text-gray-500">YOUR BIKE</div>
+              <div className="font-medium">{reg || ((bikeModel || "Bike") + (rto ? ` · ${rto}` : ""))}</div>
+            </div>
+            <div className="text-right">
+              <div className="text-xs text-gray-500">SELECTED PLAN</div>
+              <div className="font-medium">{planName || planId || "-"}</div>
+            </div>
+          </div>
 
-      <div className="flex gap-6 mb-4 text-sm">
-        <div className={`flex items-center gap-2 ${step === "owner" ? "text-orange-600 font-semibold" : "text-gray-600"}`}>
-          <span className={`w-5 h-5 rounded-full border flex items-center justify-center ${step === "owner" ? "bg-orange-500 text-white border-orange-500" : "bg-white"}`}>1</span>
-          Bike Owner Details
-        </div>
-        <div className={`flex items-center gap-2 ${step === "address" ? "text-orange-600 font-semibold" : "text-gray-600"}`}>
-          <span className={`w-5 h-5 rounded-full border flex items-center justify-center ${step === "address" ? "bg-orange-500 text-white border-orange-500" : "bg-white"}`}>2</span>
-          Communication Address
-        </div>
-      </div>
+          <div className="flex gap-6 mb-1 text-sm">
+            <div className={`flex items-center gap-2 ${step === "owner" ? "text-orange-600 font-semibold" : "text-gray-600"}`}>
+              <span className={`w-5 h-5 rounded-full border flex items-center justify-center ${step === "owner" ? "bg-orange-500 text-white border-orange-500" : "bg-white"}`}>1</span>
+              Bike Owner Details
+            </div>
+            <div className={`flex items-center gap-2 ${step === "address" ? "text-orange-600 font-semibold" : "text-gray-600"}`}>
+              <span className={`w-5 h-5 rounded-full border flex items-center justify-center ${step === "address" ? "bg-orange-500 text-white border-orange-500" : "bg-white"}`}>2</span>
+              Communication Address
+            </div>
+          </div>
 
-      {step === "owner" ? (
+          {step === "owner" ? (
         <form onSubmit={next} className="bg-white border rounded-xl shadow-sm p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
             <label className="text-sm font-medium text-gray-700">Bike registered in company name?</label>
@@ -160,10 +167,64 @@ export default function PurchaseForm() {
           </div>
           <div className="md:col-span-2 flex gap-3">
             <button type="button" onClick={() => setStep("owner")} className="border rounded-md px-6 py-3">Back</button>
-            <button type="submit" className="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-md px-6 py-3">Proceed to Pay</button>
+            <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md px-6 py-3">Pay securely</button>
           </div>
         </form>
       )}
+        </div>
+
+        {/* Right: sticky order summary */}
+        <aside className="lg:col-span-4">
+          <div className="lg:sticky lg:top-6">
+            <div className="bg-white border rounded-xl shadow-sm p-5">
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="text-sm font-semibold">{planName || planId || "Selected plan"}</div>
+                  <div className="text-xs text-gray-600">{policyType || "Comprehensive"}{idvLevel ? ` · IDV ${idvLevel}` : ""}</div>
+                </div>
+                <div className="w-10 h-10 bg-gray-100 rounded" />
+              </div>
+              <div className="mt-3 text-xs text-gray-600">
+                {reg ? (
+                  <>Bike: <span className="font-medium text-gray-800">{reg}</span></>
+                ) : (
+                  <>Bike: <span className="font-medium text-gray-800">{bikeModel || "-"}</span>{rto ? <> · <span className="font-medium text-gray-800">{rto}</span></> : null}</>
+                )}
+              </div>
+
+              {/* Premium details */}
+              <div className="mt-4 border-t pt-4 space-y-2 text-sm">
+                {(() => {
+                  const totalNum = Number(total || 0);
+                  const gst = Math.round(totalNum * 0.18);
+                  const net = Math.max(totalNum - gst, 0);
+                  return (
+                    <>
+                      <div className="flex items-center justify-between"><span className="text-gray-600">Net premium</span><span>₹ {net.toLocaleString("en-IN")}</span></div>
+                      <div className="flex items-center justify-between"><span className="text-gray-600">GST</span><span>₹ {gst.toLocaleString("en-IN")}</span></div>
+                      <div className="flex items-center justify-between font-semibold text-gray-900 border-t pt-2"><span>Final premium</span><span>₹ {totalNum.toLocaleString("en-IN")}</span></div>
+                    </>
+                  );
+                })()}
+              </div>
+
+              <button
+                onClick={() => {
+                  // mimic submit of current step if on owner step, else submit form
+                  if (step === "owner") setStep("address");
+                }}
+                className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md px-6 py-3"
+              >
+                Pay securely
+              </button>
+
+              <div className="mt-2 text-[11px] text-gray-500">
+                By clicking on &apos;Pay securely&apos;, I agree to the terms &amp; conditions
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
     </section>
   );
 }

@@ -1,35 +1,40 @@
+"use client";
+import { Box, Text, Button, Table } from "@chakra-ui/react";
+
 export default function SEOMetadataPage() {
   const pages = [
     { path: "/", title: "Coverfox - Insurance made easy", desc: "Compare and buy insurance" },
     { path: "/bike-insurance", title: "Bike Insurance - Coverfox", desc: "Instant quotes for 2-wheeler" },
   ];
   return (
-    <div className="space-y-6">
-      <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
-        <h2 className="text-lg font-semibold mb-4">Metadata</h2>
-        <div className="overflow-auto">
-          <table className="min-w-full text-sm">
-            <thead>
-              <tr className="text-left text-gray-600 border-b">
-                <th className="py-2 pr-4">Path</th>
-                <th className="py-2 pr-4">Title</th>
-                <th className="py-2 pr-4">Description</th>
-                <th className="py-2 pr-4">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
+    <Box display="grid" gap={6}>
+      <Box bg="white" borderWidth="1px" borderColor="gray.200" rounded="xl" shadow="sm" p={6}>
+        <Text fontSize="lg" fontWeight="semibold" mb={4}>Metadata</Text>
+        <Box overflowX="auto">
+          <Table.Root size="sm">
+            <Table.Header>
+              <Table.Row>
+                <Table.ColumnHeader>Path</Table.ColumnHeader>
+                <Table.ColumnHeader>Title</Table.ColumnHeader>
+                <Table.ColumnHeader>Description</Table.ColumnHeader>
+                <Table.ColumnHeader>Actions</Table.ColumnHeader>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
               {pages.map((p) => (
-                <tr key={p.path} className="border-b last:border-0">
-                  <td className="py-2 pr-4 font-medium">{p.path}</td>
-                  <td className="py-2 pr-4">{p.title}</td>
-                  <td className="py-2 pr-4">{p.desc}</td>
-                  <td className="py-2 pr-4"><button className="border rounded px-3 py-1">Edit</button></td>
-                </tr>
+                <Table.Row key={p.path}>
+                  <Table.Cell fontWeight="medium">{p.path}</Table.Cell>
+                  <Table.Cell>{p.title}</Table.Cell>
+                  <Table.Cell>{p.desc}</Table.Cell>
+                  <Table.Cell>
+                    <Button size="xs" variant="outline">Edit</Button>
+                  </Table.Cell>
+                </Table.Row>
               ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </div>
+            </Table.Body>
+          </Table.Root>
+        </Box>
+      </Box>
+    </Box>
   );
 }

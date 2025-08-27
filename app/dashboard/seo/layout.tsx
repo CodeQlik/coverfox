@@ -1,5 +1,6 @@
 import DashboardSidebar, { SidebarItem } from "../../components/DashboardSidebar";
 import { FiSearch, FiMap, FiCpu, FiTag } from "react-icons/fi";
+import { Box } from "@chakra-ui/react";
 
 export default function SEOLayout({ children }: { children: React.ReactNode }) {
   const items: SidebarItem[] = [
@@ -10,9 +11,9 @@ export default function SEOLayout({ children }: { children: React.ReactNode }) {
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr] gap-6">
+    <Box display="grid" gridTemplateColumns={{ base: "1fr", lg: "18rem 1fr" }} gap={6}>
       <DashboardSidebar items={items} accent="blue" />
-      <main className="min-h-[calc(100vh-9rem)]">{children}</main>
-    </div>
+      <Box as="main" minH="calc(100vh - 9rem)">{children}</Box>
+    </Box>
   );
 }

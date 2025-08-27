@@ -5,6 +5,8 @@ import { useState } from "react";
 export default function CheckoutClient() {
   const sp = useSearchParams();
   const reg = sp.get("reg") ?? "";
+  const bikeModel = sp.get("bikeModel") ?? "";
+  const rto = sp.get("rto") ?? "";
   const planId = sp.get("planId") ?? "";
   const planName = sp.get("planName") ?? "";
   const total = Number(sp.get("total") ?? 0);
@@ -57,7 +59,14 @@ export default function CheckoutClient() {
     y += 10;
     doc.setFontSize(12);
     addLine("Date", new Date().toLocaleString());
-    addLine("Registration No.", reg || "-");
+    if (reg) {
+      addLine("Registration No.", reg);
+    } else if (bikeModel || rto) {
+      if (bikeModel) addLine("Bike Model", bikeModel);
+      if (rto) addLine("RTO", rto);
+    } else {
+      addLine("Vehicle", "-");
+    }
     addLine("Plan", `${planName || planId || "-"}`);
     if (policyType) addLine("Policy Type", policyType);
     if (idvLevel) addLine("IDV", idvLevel);
@@ -110,8 +119,8 @@ export default function CheckoutClient() {
           <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start justify-between">
             <div>
               <div className="text-[11px] tracking-wide text-gray-500">REGISTRATION NUMBER</div>
-              <div className="font-semibold text-gray-900">{reg || "-"}</div>
-              <div className="text-xs text-gray-600">BIKE: Royal Enfield Classic 500 (499 CC)</div>
+              <div className="font-semibold text-gray-900">{reg || (bikeModel || rto ? `${bikeModel || "Bike"}${rto ? ` · ${rto}` : ""}` : "-")}</div>
+              <div className="text-xs text-gray-600">{reg ? "BIKE: Royal Enfield Classic 500 (499 CC)" : "Model/RTO as provided"}</div>
               {(planName || policyType || idvLevel) && (
                 <div className="text-xs text-gray-600 mt-1 flex flex-wrap gap-x-4 gap-y-1">
                   {(planName || planId) && <span>Plan: <span className="font-medium text-gray-800">{planName || planId}</span></span>}

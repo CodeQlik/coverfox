@@ -1,32 +1,37 @@
+"use client";
+import { Box, Text, SimpleGrid, Field, Input, Button } from "@chakra-ui/react";
+
 export default function UserKycPage() {
   return (
-    <div className="space-y-6">
-      <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
-        <h2 className="text-lg font-semibold mb-4">KYC Verification</h2>
-        <p className="text-sm text-gray-600 mb-4">Submit your KYC details to speed up policy issuance and claims.</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-          <div>
-            <label className="block text-gray-600 mb-1">PAN</label>
-            <input className="w-full border rounded-md px-3 py-2" placeholder="ABCDE1234F" />
-          </div>
-          <div>
-            <label className="block text-gray-600 mb-1">Aadhaar (last 4 digits)</label>
-            <input className="w-full border rounded-md px-3 py-2" placeholder="1234" />
-          </div>
-          <div>
-            <label className="block text-gray-600 mb-1">Date of Birth</label>
-            <input type="date" className="w-full border rounded-md px-3 py-2" />
-          </div>
-          <div>
-            <label className="block text-gray-600 mb-1">Upload ID Proof</label>
-            <input type="file" className="w-full border rounded-md px-3 py-2" />
-          </div>
-        </div>
-        <div className="mt-4 flex items-center gap-3">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white rounded-md px-4 py-2 text-sm">Submit KYC</button>
-          <span className="text-xs text-gray-500">Status: Pending Verification</span>
-        </div>
-      </section>
-    </div>
+    <Box display="grid" gap={6}>
+      <Box bg="white" borderWidth="1px" borderColor="gray.200" rounded="xl" shadow="sm" p={6}>
+        <Text fontSize="lg" fontWeight="semibold" mb={2}>KYC Verification</Text>
+        <Text fontSize="sm" color="gray.600" mb={4}>Submit your KYC details to speed up policy issuance and claims.</Text>
+
+        <SimpleGrid columns={{ base: 1, md: 2 }} gap={4} fontSize="sm">
+          <Field.Root>
+            <Field.Label>PAN</Field.Label>
+            <Input placeholder="ABCDE1234F" size="sm" />
+          </Field.Root>
+          <Field.Root>
+            <Field.Label>Aadhaar (last 4 digits)</Field.Label>
+            <Input placeholder="1234" size="sm" />
+          </Field.Root>
+          <Field.Root>
+            <Field.Label>Date of Birth</Field.Label>
+            <Input type="date" size="sm" />
+          </Field.Root>
+          <Field.Root>
+            <Field.Label>Upload ID Proof</Field.Label>
+            <Input type="file" size="sm" />
+          </Field.Root>
+        </SimpleGrid>
+
+        <Box mt={4} display="flex" alignItems="center" gap={3}>
+          <Button size="sm" colorPalette="orange">Submit KYC</Button>
+          <Text fontSize="xs" color="gray.500">Status: Pending Verification</Text>
+        </Box>
+      </Box>
+    </Box>
   );
 }

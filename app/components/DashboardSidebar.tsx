@@ -1,6 +1,7 @@
 "use client";
-import Link from "next/link";
+import NextLink from "next/link";
 import { usePathname } from "next/navigation";
+import { Box, Link, Text, Badge } from "@chakra-ui/react";
 
 export type SidebarItem = { label: string; href: string; icon?: React.ReactNode };
 
@@ -15,13 +16,10 @@ const DEFAULT_MENU: Record<string, SidebarItem[]> = {
     { label: "Overview", href: "/dashboard/admin", icon: "📊" },
     { label: "Users", href: "/dashboard/admin/users", icon: "👥" },
     { label: "Policies", href: "/dashboard/admin/policies", icon: "📑" },
+    { label: "Settings", href: "/dashboard/admin/settings", icon: "⚙️" },
   ],
-  seo: [
-    { label: "Overview", href: "/dashboard/seo", icon: "🔎" },
-  ],
-  agent: [
-    { label: "Overview", href: "/dashboard/agent", icon: "💼" },
-  ],
+  seo: [{ label: "Overview", href: "/dashboard/seo", icon: "🔎" }],
+  agent: [{ label: "Overview", href: "/dashboard/agent", icon: "💼" }],
 };
 
 export default function DashboardSidebar({
@@ -36,37 +34,61 @@ export default function DashboardSidebar({
   const pathname = usePathname();
   const menu = items || DEFAULT_MENU[role] || DEFAULT_MENU.user;
 
-  const accentClasses: Record<string, { bg: string; border: string; text: string }> = {
-    orange: { bg: "bg-orange-50", border: "border-orange-200", text: "text-orange-700" },
-    blue: { bg: "bg-blue-50", border: "border-blue-200", text: "text-blue-700" },
-    emerald: { bg: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-700" },
-    violet: { bg: "bg-violet-50", border: "border-violet-200", text: "text-violet-700" },
+  const accentMap: Record<string, { bg: string; color: string; border: string }> = {
+    orange: { bg: "orange.50", color: "orange.700", border: "orange.200" },
+    blue: { bg: "blue.50", color: "blue.700", border: "blue.200" },
+    emerald: { bg: "green.50", color: "green.700", border: "green.200" },
+    violet: { bg: "purple.50", color: "purple.700", border: "purple.200" },
   };
-  const activeStyle = accentClasses[accent] || accentClasses.orange;
+  const active = accentMap[accent] || accentMap.orange;
 
   return (
-    <aside className="hidden lg:block w-72 shrink-0">
-      <div className="sticky top-6 bg-white border border-gray-200 rounded-xl shadow-sm p-3 h-[calc(100vh-7rem)] overflow-y-auto">
-        <nav className="space-y-1">
+    <Box display={{ base: "none", lg: "block" }} w="18rem" flexShrink={0}>
+      <Box position="sticky" top={6} bg="white" borderWidth="1px" borderColor="gray.200" rounded="xl" shadow="sm" p={3} h="calc(100vh - 7rem)" overflowY="auto">
+        {/* Header */}
+        <Box display="flex" alignItems="center" justifyContent="space-between" px={2} py={1} mb={2}>
+          <Text fontSize="sm" fontWeight="semibold">Dashboard</Text>
+          <Badge colorPalette="gray" variant="outline" borderColor="gray.300">{role}</Badge>
+        </Box>
+        <Box h="1px" bg="gray.200" mx={2} mb={2} />
+
+        <Box as="nav" display="flex" flexDirection="column" gap={1}>
           {menu.map(({ href, label, icon }) => {
-            const active = pathname === href || pathname.startsWith(href + "/");
+            const isActive = pathname === href || pathname.startsWith(href + "/");
             return (
               <Link
+                as={NextLink}
                 key={href}
                 href={href}
-                className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm border transition ${
-                  active
-                    ? `${activeStyle.bg} ${activeStyle.border} ${activeStyle.text}`
-                    : "hover:bg-gray-50 border-transparent text-gray-700"
-                }`}
+                rounded="md"
+                px={3}
+                py={2}
+                fontSize="sm"
+                borderWidth={isActive ? "1px" : 0}
+                bg={isActive ? active.bg : "transparent"}
+                color={isActive ? active.color : "gray.700"}
+                borderColor={isActive ? active.border : "transparent"}
+                _hover={{ bg: isActive ? active.bg : "gray.50" }}
+                display="flex"
+                alignItems="center"
+                gap={2}
+                position="relative"
               >
-                <span className="text-base">{icon}</span>
-                <span className="font-medium">{label}</span>
+                {/* active accent indicator */}
+                {isActive && (
+                  <Box position="absolute" left={0} top={1} bottom={1} width="2px" bg={active.border} rounded="sm" />
+                )}
+                <Text as="span" fontSize="md" lineHeight={1}>
+                  {icon}
+                </Text>
+                <Text as="span" fontWeight="medium">
+                  {label}
+                </Text>
               </Link>
             );
           })}
-        </nav>
-      </div>
-    </aside>
+        </Box>
+      </Box>
+    </Box>
   );
 }

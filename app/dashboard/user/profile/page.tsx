@@ -1,48 +1,51 @@
+"use client";
+import { Box, Text, SimpleGrid, Field, Input, Button } from "@chakra-ui/react";
+
 export default function UserProfilePage() {
   return (
-    <div className="space-y-6">
-      <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
-        <h2 className="text-lg font-semibold mb-4">Profile</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-          <div>
-            <label className="block text-gray-600 mb-1">Full Name</label>
-            <input className="w-full border rounded-md px-3 py-2" defaultValue="Jane Doe" />
-          </div>
-          <div>
-            <label className="block text-gray-600 mb-1">Email</label>
-            <input className="w-full border rounded-md px-3 py-2" defaultValue="jane@example.com" />
-          </div>
-          <div>
-            <label className="block text-gray-600 mb-1">Mobile</label>
-            <input className="w-full border rounded-md px-3 py-2" defaultValue="9876543210" />
-          </div>
-          <div>
-            <label className="block text-gray-600 mb-1">Gender</label>
-            <select className="w-full border rounded-md px-3 py-2">
+    <Box display="grid" gap={6}>
+      <Box bg="white" borderWidth="1px" borderColor="gray.200" rounded="xl" shadow="sm" p={6}>
+        <Text fontSize="lg" fontWeight="semibold" mb={4}>Profile</Text>
+        <SimpleGrid columns={{ base: 1, md: 2 }} gap={4} fontSize="sm">
+          <Field.Root>
+            <Field.Label>Full Name</Field.Label>
+            <Input size="sm" defaultValue="Jane Doe" />
+          </Field.Root>
+          <Field.Root>
+            <Field.Label>Email</Field.Label>
+            <Input size="sm" defaultValue="jane@example.com" />
+          </Field.Root>
+          <Field.Root>
+            <Field.Label>Mobile</Field.Label>
+            <Input size="sm" defaultValue="9876543210" />
+          </Field.Root>
+          <Field.Root>
+            <Field.Label>Gender</Field.Label>
+            <Box as="select" borderWidth="1px" borderColor="gray.300" rounded="md" px={3} py={2} fontSize="sm">
               <option>Female</option>
               <option>Male</option>
               <option>Other</option>
-            </select>
-          </div>
-        </div>
-        <div className="mt-4">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white rounded-md px-4 py-2 text-sm">Save changes</button>
-        </div>
-      </section>
+            </Box>
+          </Field.Root>
+        </SimpleGrid>
+        <Box mt={4}>
+          <Button size="sm" colorPalette="orange">Save changes</Button>
+        </Box>
+      </Box>
 
-      <section className="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
-        <h3 className="text-base font-semibold mb-3">Communication Address</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-          <input className="w-full border rounded-md px-3 py-2" placeholder="Address line 1" defaultValue="221B Baker Street" />
-          <input className="w-full border rounded-md px-3 py-2" placeholder="Address line 2" defaultValue="Near Park" />
-          <input className="w-full border rounded-md px-3 py-2" placeholder="City" defaultValue="Mumbai" />
-          <input className="w-full border rounded-md px-3 py-2" placeholder="State" defaultValue="Maharashtra" />
-          <input className="w-full border rounded-md px-3 py-2" placeholder="Pincode" defaultValue="400001" />
-        </div>
-        <div className="mt-4">
-          <button className="border rounded-md px-4 py-2 text-sm">Update address</button>
-        </div>
-      </section>
-    </div>
+      <Box bg="white" borderWidth="1px" borderColor="gray.200" rounded="xl" shadow="sm" p={6}>
+        <Text fontSize="md" fontWeight="semibold" mb={3}>Communication Address</Text>
+        <SimpleGrid columns={{ base: 1, md: 2 }} gap={4} fontSize="sm">
+          <Input size="sm" placeholder="Address line 1" defaultValue="221B Baker Street" />
+          <Input size="sm" placeholder="Address line 2" defaultValue="Near Park" />
+          <Input size="sm" placeholder="City" defaultValue="Mumbai" />
+          <Input size="sm" placeholder="State" defaultValue="Maharashtra" />
+          <Input size="sm" placeholder="Pincode" defaultValue="400001" />
+        </SimpleGrid>
+        <Box mt={4}>
+          <Button size="sm" variant="outline">Update address</Button>
+        </Box>
+      </Box>
+    </Box>
   );
 }

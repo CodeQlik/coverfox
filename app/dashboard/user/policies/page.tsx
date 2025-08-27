@@ -1,40 +1,100 @@
+"use client";
+import { useState } from "react";
+import { Box, Text, Table, Button, Badge, DialogRoot, DialogContent, DialogHeader, DialogBody, DialogFooter, useDisclosure } from "@chakra-ui/react";
+
 export default function UserPoliciesPage() {
-  const policies = [
+  type Policy = { id: string; product: string; reg: string; status: string; expiry: string };
+  const policies: Policy[] = [
     { id: "POL12345", product: "Bike Insurance", reg: "MH12AB1234", status: "Active", expiry: "2026-05-01" },
     { id: "POL67890", product: "Health Insurance", reg: "-", status: "Expired", expiry: "2024-11-12" },
   ];
+
+  const { open, onOpen, onClose, setOpen } = useDisclosure();
+  const [selected, setSelected] = useState<Policy | null>(null);
+
+  const downloadBikePolicy = async (p: { id: string; reg: string; expiry: string }) => {
+    const { jsPDF } = await import("jspdf");
+    const doc = new jsPDF();
+    let y = 18;
+    doc.setFontSize(18);
+    doc.text("Coverfox - Two Wheeler Policy", 14, y); y += 10;
+    doc.setFontSize(12);
+    doc.text(`Policy ID: ${p.id}`, 14, y); y += 8;
+    doc.text(`Registration: ${p.reg}`, 14, y); y += 8;
+    doc.text(`Status: Active`, 14, y); y += 8;
+    doc.text(`Expiry: ${p.expiry}`, 14, y); y += 12;
+    doc.text("Insured: Demo User", 14, y); y += 8;
+    doc.text("Insurer: Coverfox General Insurance (Demo)", 14, y); y += 8;
+    doc.text("Coverage: Comprehensive · PA Cover Included", 14, y); y += 12;
+    doc.setFontSize(10);
+    doc.text("Note: This is a demo policy PDF generated for testing.", 14, y);
+    doc.save(`Bike-Policy-${p.reg || p.id}.pdf`);
+  };
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-6">
-      <h2 className="text-lg font-semibold mb-4">Your Policies</h2>
-      <div className="overflow-auto">
-        <table className="min-w-full text-sm">
-          <thead>
-            <tr className="text-left text-gray-600 border-b">
-              <th className="py-2 pr-4">Policy ID</th>
-              <th className="py-2 pr-4">Product</th>
-              <th className="py-2 pr-4">Reg/Ref</th>
-              <th className="py-2 pr-4">Status</th>
-              <th className="py-2 pr-4">Expiry</th>
-              <th className="py-2 pr-4">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
+    <Box bg="white" borderWidth="1px" borderColor="gray.200" rounded="xl" shadow="sm" p={6}>
+      <Text fontSize="lg" fontWeight="semibold" mb={4}>Your Policies</Text>
+      <Box overflowX="auto">
+        <Table.Root size="sm">
+          <Table.Header>
+            <Table.Row>
+              <Table.ColumnHeader>Policy ID</Table.ColumnHeader>
+              <Table.ColumnHeader>Product</Table.ColumnHeader>
+              <Table.ColumnHeader>Reg/Ref</Table.ColumnHeader>
+              <Table.ColumnHeader>Status</Table.ColumnHeader>
+              <Table.ColumnHeader>Expiry</Table.ColumnHeader>
+              <Table.ColumnHeader>Actions</Table.ColumnHeader>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
             {policies.map((p) => (
-              <tr key={p.id} className="border-b last:border-0">
-                <td className="py-2 pr-4 font-medium">{p.id}</td>
-                <td className="py-2 pr-4">{p.product}</td>
-                <td className="py-2 pr-4">{p.reg}</td>
-                <td className="py-2 pr-4"><span className={`px-2 py-1 rounded text-xs ${p.status === 'Active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'}`}>{p.status}</span></td>
-                <td className="py-2 pr-4">{p.expiry}</td>
-                <td className="py-2 pr-4">
-                  <button className="border rounded px-3 py-1 mr-2">View</button>
-                  <button className="border rounded px-3 py-1">Download</button>
-                </td>
-              </tr>
+              <Table.Row key={p.id}>
+                <Table.Cell fontWeight="medium">{p.id}</Table.Cell>
+                <Table.Cell>{p.product}</Table.Cell>
+                <Table.Cell>{p.reg}</Table.Cell>
+                <Table.Cell>
+                  <Badge colorScheme={p.status === 'Active' ? 'green' : 'gray'}>{p.status}</Badge>
+                </Table.Cell>
+                <Table.Cell>{p.expiry}</Table.Cell>
+                <Table.Cell display="flex" gap={2}>
+                  <Button size="xs" variant="outline" onClick={() => { setSelected(p); onOpen(); }}>View</Button>
+                  {p.product === 'Bike Insurance' ? (
+                    <Button size="xs" variant="solid" colorScheme="orange" onClick={() => downloadBikePolicy(p)}>
+                      Download PDF
+                    </Button>
+                  ) : (
+                    <Button size="xs" variant="outline" disabled title="Download available for Bike Insurance">
+                      Download
+                    </Button>
+                  )}
+                </Table.Cell>
+              </Table.Row>
             ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+          </Table.Body>
+        </Table.Root>
+      </Box>
+
+      {/* View Policy Dialog */}
+      <DialogRoot open={open} onOpenChange={(e) => setOpen(e.open)}>
+        <DialogContent>
+          <DialogHeader>Policy Details</DialogHeader>
+          <DialogBody>
+            {selected ? (
+              <Box fontSize="sm" lineHeight={1.8}>
+                <Text><b>Policy ID:</b> {selected.id}</Text>
+                <Text><b>Product:</b> {selected.product}</Text>
+                <Text><b>Registration/Ref:</b> {selected.reg}</Text>
+                <Text><b>Status:</b> {selected.status}</Text>
+                <Text><b>Expiry:</b> {selected.expiry}</Text>
+              </Box>
+            ) : (
+              <Text fontSize="sm">No policy selected.</Text>
+            )}
+          </DialogBody>
+          <DialogFooter>
+            <Button size="sm" onClick={onClose}>Close</Button>
+          </DialogFooter>
+        </DialogContent>
+      </DialogRoot>
+    </Box>
   );
 }
