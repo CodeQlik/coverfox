@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import QuotesGrid from "../../components/QuotesGrid";
+import BikeDetailsHeader from "../../components/BikeDetailsHeader";
 
 export const metadata = {
   title: "Bike Insurance Quotes | Coverfox",

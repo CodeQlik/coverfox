@@ -1,6 +1,7 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
+import Image from "next/image";
 
 type Plan = {
   id: string;
@@ -11,11 +12,11 @@ type Plan = {
 };
 
 const samplePlans: Plan[] = [
-  { id: "sbi", insurer: "SBI General", idv: 33600, price: 3195 },
-  { id: "acko", insurer: "ACKO", idv: 42125, price: 3308 },
-  { id: "iffco", insurer: "IFFCO-TOKIO", idv: 47600, price: 3542 },
-  { id: "tata", insurer: "Tata AIG", idv: 44750, price: 3671 },
-  { id: "hdfc", insurer: "HDFC ERGO", idv: 31824, price: 3795 },
+  { id: "sbi", insurer: "SBI General", logo: "/images/insurancer/sbi.png", idv: 33600, price: 3195 },
+  { id: "acko", insurer: "ACKO", logo: "/images/insurancer/acko.png", idv: 42125, price: 3308 },
+  { id: "iffco", insurer: "IFFCO-TOKIO", logo: "/images/insurancer/go-digit.png", idv: 47600, price: 3542 },
+  { id: "tata", insurer: "Tata AIG", logo: "/images/insurancer/tata-aig.png", idv: 44750, price: 3671 },
+  { id: "hdfc", insurer: "HDFC ERGO", logo: "/images/insurancer/hdfc-ergo.png", idv: 31824, price: 3795 },
 ];
 
 export default function QuotesGrid() {
@@ -225,7 +226,18 @@ export default function QuotesGrid() {
             {visiblePlans.map((p) => (
               <div key={p.id} className="bg-white rounded-xl border shadow-sm p-5 flex flex-col">
                 <div className="h-10 flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 bg-gray-100 rounded" />
+                  {p.logo ? (
+                    <div className="w-10 h-10 relative">
+                      <Image
+                        src={p.logo}
+                        alt={`${p.insurer} logo`}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-10 h-10 bg-gray-100 rounded" />
+                  )}
                   <div className="font-medium">{p.insurer}</div>
                 </div>
                 {planIdv(p) !== null ? (

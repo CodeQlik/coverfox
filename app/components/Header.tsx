@@ -2,7 +2,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 
 import Image from "next/image";
-import logo from "../images/logo.avif";
+import logo from "../images/logo.jpeg";
 const navItems = [
   {
     label: "Insurance Products",
@@ -216,6 +216,9 @@ const Header = () => {
   const [role, setRole] = useState<string | null>(null);
 
   useEffect(() => {
+    // Only access document on client side
+    if (typeof window === 'undefined') return;
+    
     // parse cookies for cf_user and cf_role
     const map = Object.fromEntries(
       document.cookie.split("; ").map((c) => {
@@ -260,7 +263,7 @@ const Header = () => {
   return (
     <header className="w-full bg-white shadow flex items-center justify-between px-8 py-3 z-50 relative">
       <div className="flex items-center gap-2 text-2xl font-bold text-black">
-        <Image src={logo} alt="Coverfox Logo"  className="h-10 w-auto" priority />
+        <Image src={logo} alt="Coverfox Logo"  className="h-20 w-auto" priority />
       </div>
       <nav className="flex items-center gap-4 relative">
         {navItems.map((item) => (
