@@ -156,10 +156,10 @@ const navItems = [
         <div className="mb-2">
           <div className="text-xs font-bold text-[#00E0E0] mb-2 bg-[#E6FCFC] px-3 py-1 rounded-full w-max">My account</div>
           <ul className="space-y-3 mb-4">
-            <li className="flex items-center gap-3">
+            {/* <li className="flex items-center gap-3">
               <span className="text-xl">📋</span>
               <span className="font-semibold text-[#23235F]">Dashboard</span>
-            </li>
+            </li> */}
             <li className="flex items-center gap-3">
               <span className="text-xl">🗂️</span>
               <div>
@@ -262,7 +262,9 @@ const Header = () => {
   return (
     <header className="w-full bg-white shadow flex items-center justify-between px-8 py-3 z-50 relative">
       <div className="flex items-center gap-2 text-2xl font-bold text-black">
+        <a href="/">
         <Image src="/logo.jpeg" alt="Coverfox Logo" width={64} height={64} className="h-16 w-auto" priority />
+        </a>
       </div>
       <nav className="flex items-center gap-4 relative">
         {navItems.map((item) => (
