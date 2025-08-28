@@ -112,6 +112,35 @@ export default function CheckoutClient() {
     doc.save(`Coverfox-Bike-Insurance-${reg || "policy"}.pdf`);
   };
 
+  const downloadReceipt = async () => {
+    const { jsPDF } = await import("jspdf");
+    const doc = new jsPDF();
+    let y = 16;
+    doc.setFontSize(16);
+    doc.text("Payment Receipt - Coverfox", 14, y);
+    y += 10;
+    doc.setFontSize(12);
+    doc.text(`Receipt No: RCPT-${Math.random().toString(36).slice(2,8).toUpperCase()}`, 14, y); y += 8;
+    doc.text(`Date: ${new Date().toLocaleString()}`, 14, y); y += 8;
+    const veh = reg || [bikeModel, rto].filter(Boolean).join(" · ") || "-";
+    doc.text(`Vehicle: ${veh}`, 14, y); y += 8;
+    doc.text(`Plan: ${planName || planId || '-'}`, 14, y); y += 8;
+    if (policyType) { doc.text(`Policy Type: ${policyType}`, 14, y); y += 8; }
+    if (idvLevel) { doc.text(`IDV: ${idvLevel}`, 14, y); y += 8; }
+    y += 2; doc.line(14, y, 196, y); y += 8;
+    doc.text(`Premium: ₹${premium.toLocaleString('en-IN')}`, 14, y); y += 8;
+    doc.text(`GST (18%): ₹${gst.toLocaleString('en-IN')}`, 14, y); y += 8;
+    doc.text(`Total Paid: ₹${grandTotal.toLocaleString('en-IN')}`, 14, y); y += 12;
+    doc.setFontSize(11);
+    if (ownerName) { doc.text(`Payer: ${ownerName}`, 14, y); y += 8; }
+    if (email) { doc.text(`Email: ${email}`, 14, y); y += 8; }
+    if (mobile) { doc.text(`Mobile: ${mobile}`, 14, y); y += 8; }
+    y += 6;
+    doc.setFontSize(10);
+    doc.text("Note: This is a dummy receipt for demo purposes only.", 14, y);
+    doc.save(`Coverfox-Receipt-${reg || 'bike'}.pdf`);
+  };
+
   return (
     <main className="px-4 md:px-6 lg:px-8 py-8">
       <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -193,13 +222,19 @@ export default function CheckoutClient() {
                 {status === "processing" ? "Processing..." : status === "success" ? "Paid" : `Pay ₹${grandTotal.toLocaleString("en-IN")}`}
               </button>
               {status === "success" && (
-                <button onClick={downloadPdf} className="border rounded-md px-4 py-3 inline-flex items-center">
-                  Download Policy PDF
-                </button>
+                <>
+                  <button onClick={downloadPdf} className="border rounded-md px-4 py-3 inline-flex items-center">
+                  Download Receipt
+                  </button>
+                </>
               )}
             </div>
             {status === "processing" && <div className="text-sm text-gray-500 mt-2">Validating KYC details...</div>}
-            {status === "success" && <div className="text-sm text-green-700 mt-2">Payment successful. Policy will be emailed to you. (Dummy)</div>}
+            {status === "success" && (
+              <div className="text-sm text-green-700 mt-2">
+                Payment successful. We will email your policy to you. You can also download your receipt now.
+              </div>
+            )}
           </div>
         </div>
 

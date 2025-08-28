@@ -2,7 +2,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 
 import Image from "next/image";
-import logo from "../images/logo.jpeg";
 const navItems = [
   {
     label: "Insurance Products",
@@ -263,7 +262,7 @@ const Header = () => {
   return (
     <header className="w-full bg-white shadow flex items-center justify-between px-8 py-3 z-50 relative">
       <div className="flex items-center gap-2 text-2xl font-bold text-black">
-        <Image src={logo} alt="Coverfox Logo"  className="h-20 w-auto" priority />
+        <Image src="/logo.jpeg" alt="Coverfox Logo" width={64} height={64} className="h-16 w-auto" priority />
       </div>
       <nav className="flex items-center gap-4 relative">
         {navItems.map((item) => (
