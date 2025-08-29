@@ -135,22 +135,22 @@ export default function PurchaseForm() {
   };
 
   return (
-    <section className="mx-auto max-w-6xl">
+    <section className="mx-auto max-w-6xl px-2 sm:px-0">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left: steps and forms */}
         <div className="lg:col-span-8 space-y-4">
-          <div className="bg-white border rounded-xl shadow-sm p-4 flex items-center justify-between">
+          <div className="bg-white border rounded-xl shadow-sm p-4 flex flex-wrap items-center justify-between gap-3">
             <div>
               <div className="text-xs text-gray-500">YOUR BIKE</div>
               <div className="font-medium">{reg || ((bikeModel || "Bike") + (rto ? ` · ${rto}` : ""))}</div>
             </div>
-            <div className="text-right">
+            <div className="text-right sm:text-right">
               <div className="text-xs text-gray-500">SELECTED PLAN</div>
               <div className="font-medium">{planName || planId || "-"}</div>
             </div>
           </div>
 
-          <div className="flex gap-6 mb-1 text-sm">
+          <div className="flex flex-wrap gap-3 sm:gap-6 mb-1 text-xs sm:text-sm">
             <div className={`flex items-center gap-2 ${step === "owner" ? "text-orange-600 font-semibold" : "text-gray-600"}`}>
               <span className={`w-5 h-5 rounded-full border flex items-center justify-center ${step === "owner" ? "bg-orange-500 text-white border-orange-500" : "bg-white"}`}>1</span>
               Bike Owner Details
@@ -166,10 +166,10 @@ export default function PurchaseForm() {
           </div>
 
           {step === "owner" ? (
-            <form onSubmit={next} className="bg-white border rounded-xl shadow-sm p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form onSubmit={next} className="bg-white border rounded-xl shadow-sm p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-2">
                 <label className="text-sm font-medium text-gray-700">Bike registered in company name?</label>
-                <div className="mt-2 flex gap-6 text-sm">
+                <div className="mt-2 flex flex-wrap gap-4 sm:gap-6 text-sm">
                   <label className="flex items-center gap-2"><input type="radio" name="company" value="yes" /> Yes</label>
                   <label className="flex items-center gap-2"><input type="radio" name="company" value="no" defaultChecked /> No</label>
                 </div>
@@ -181,7 +181,7 @@ export default function PurchaseForm() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Gender</label>
-                <div className="mt-2 flex gap-6 text-sm">
+                <div className="mt-2 flex flex-wrap gap-4 sm:gap-6 text-sm">
                   <label className="flex items-center gap-2"><input type="radio" name="gender" value="Male" checked={gender === "Male"} onChange={() => setGender("Male")} /> Male</label>
                   <label className="flex items-center gap-2"><input type="radio" name="gender" value="Female" checked={gender === "Female"} onChange={() => setGender("Female")} /> Female</label>
                 </div>
@@ -239,13 +239,13 @@ export default function PurchaseForm() {
                 </select>
               </div>
               <div className="md:col-span-2">
-                <button type="submit" className="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-md px-6 py-3">
+                <button type="submit" className="bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-md px-5 sm:px-6 py-3 text-sm sm:text-base">
                   NEXT: Communication Address
                 </button>
               </div>
             </form>
           ) : step === "address" ? (
-            <form onSubmit={(e) => { e.preventDefault(); setStep("vehicle"); }} className="bg-white border rounded-xl shadow-sm p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form onSubmit={(e) => { e.preventDefault(); setStep("vehicle"); }} className="bg-white border rounded-xl shadow-sm p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-2 text-gray-700">Provide your communication address, then proceed to pay.</div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Address Line 1</label>
@@ -267,22 +267,22 @@ export default function PurchaseForm() {
                 <label className="block text-sm font-medium text-gray-700">PIN Code</label>
                 <input required className="w-full border rounded-md px-3 py-2" value={pincode} onChange={(e) => setPincode(e.target.value)} />
               </div>
-              <div className="md:col-span-2 flex gap-3">
-                <button type="button" onClick={() => setStep("owner")} className="border rounded-md px-6 py-3">Back</button>
-                <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md px-6 py-3">Next: Vehicle Details</button>
+              <div className="md:col-span-2 flex flex-wrap gap-3">
+                <button type="button" onClick={() => setStep("owner")} className="border rounded-md px-5 sm:px-6 py-3 text-sm sm:text-base">Back</button>
+                <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md px-5 sm:px-6 py-3 text-sm sm:text-base">Next: Vehicle Details</button>
               </div>
             </form>
           ) : (
-            <form onSubmit={submit} className="bg-white border rounded-xl shadow-sm p-6">
-              <div className="flex items-center justify-between mb-4">
+            <form onSubmit={submit} className="bg-white border rounded-xl shadow-sm p-4 sm:p-6">
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                 <div className="text-sm font-semibold text-gray-900">Vehicle & Past Policy</div>
-                <div className="flex items-center gap-3 text-sm">
+                <div className="flex flex-wrap items-center gap-3 text-sm">
                   <span className="text-gray-600">Type:</span>
                   <label className="flex items-center gap-1"><input type="radio" name="rtype" checked={!isRenewal} onChange={() => setIsRenewal(false)} /> New</label>
                   <label className="flex items-center gap-1"><input type="radio" name="rtype" checked={isRenewal} onChange={() => setIsRenewal(true)} /> Renew</label>
                 </div>
               </div>
-              <div className="border-b mb-4 flex gap-6 text-sm">
+              <div className="border-b mb-4 flex flex-wrap gap-4 sm:gap-6 text-sm">
                 <button type="button" onClick={() => setVTab("vehicle")} className={`pb-2 ${vTab === "vehicle" ? "border-b-2 border-orange-500 text-orange-600" : "text-gray-600"}`}>Vehicle Details</button>
                 <button type="button" onClick={() => setVTab("past")} disabled={!isRenewal} className={`pb-2 ${vTab === "past" ? "border-b-2 border-orange-500 text-orange-600" : "text-gray-600"} ${!isRenewal ? "opacity-50 cursor-not-allowed" : ""}`}>Past Policy Details</button>
               </div>
@@ -303,7 +303,7 @@ export default function PurchaseForm() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700">Is bike currently on loan?</label>
-                    <div className="mt-2 flex gap-6 text-sm">
+                    <div className="mt-2 flex flex-wrap gap-4 sm:gap-6 text-sm">
                       <label className="flex items-center gap-2"><input type="radio" name="onloan" value="Yes" checked={onLoan === "Yes"} onChange={() => setOnLoan("Yes")} /> Yes</label>
                       <label className="flex items-center gap-2"><input type="radio" name="onloan" value="No" checked={onLoan === "No"} onChange={() => {
                         setOnLoan("No");
@@ -353,9 +353,9 @@ export default function PurchaseForm() {
                 </div>
               )}
 
-              <div className="mt-6 flex gap-3">
-                <button type="button" onClick={() => setStep("address")} className="border rounded-md px-6 py-3">Back</button>
-                <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md px-6 py-3">Next: Review & KYC</button>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <button type="button" onClick={() => setStep("address")} className="border rounded-md px-5 sm:px-6 py-3 text-sm sm:text-base">Back</button>
+                <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md px-5 sm:px-6 py-3 text-sm sm:text-base">Next: Review & KYC</button>
               </div>
             </form>
           )}
@@ -364,7 +364,7 @@ export default function PurchaseForm() {
         {/* Right: sticky order summary */}
         <aside className="lg:col-span-4">
           <div className="lg:sticky lg:top-6">
-            <div className="bg-white border rounded-xl shadow-sm p-5">
+            <div className="bg-white border rounded-xl shadow-sm p-4 sm:p-5">
               <div className="flex items-start justify-between">
                 <div>
                   <div className="text-sm font-semibold">{planName || planId || "Selected plan"}</div>
@@ -411,14 +411,14 @@ export default function PurchaseForm() {
                       setStep("vehicle");
                     }
                   }}
-                  className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md px-6 py-3"
+                  className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md px-5 sm:px-6 py-3 text-sm sm:text-base"
                 >
                   {step === "owner" ? "Next: Address" : "Next: Vehicle Details"}
                 </button>
               ) : (
                 <button
                   onClick={(e) => { e.preventDefault(); submit(e as any); }}
-                  className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md px-6 py-3"
+                  className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md px-5 sm:px-6 py-3 text-sm sm:text-base"
                 >
                   Proceed to KYC
                 </button>

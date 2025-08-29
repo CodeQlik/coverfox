@@ -7,7 +7,7 @@ const cards = [
     ),
     content: (
       <>
-        <div className="text-[#1BC47D] font-semibold text-lg">Our claims assistance<br />experts are available <span className="bg-[#1BC47D] text-white px-2 py-0.5 rounded text-base ml-1">24x7*</span></div>
+        <div className="text-[#1BC47D] font-semibold text-base sm:text-lg">Our claims assistance<br />experts are available <span className="bg-[#1BC47D] text-white px-2 py-0.5 rounded text-sm sm:text-base ml-1">24x7*</span></div>
         <div className="text-xs text-gray-500 mt-1">*Assistance available for Health & Motor insurance</div>
       </>
     ),
@@ -18,8 +18,8 @@ const cards = [
     ),
     content: (
       <>
-        <div className="text-[#23235F] font-bold text-base mb-1">Got a question about insurance?</div>
-        <div className="text-sm text-gray-500">Drop a message and we will help you quickly.</div>
+        <div className="text-[#23235F] font-bold text-sm sm:text-base mb-1">Got a question about insurance?</div>
+        <div className="text-xs sm:text-sm text-gray-500">Drop a message and we will help you quickly.</div>
       </>
     ),
   },
@@ -29,23 +29,22 @@ const cards = [
     ),
     content: (
       <>
-        <div className="text-gray-400 text-sm">Beware of</div>
-        <div className="text-[#23235F] font-bold text-lg">Insurance Fraudsters</div>
+        <div className="text-gray-400 text-xs sm:text-sm">Beware of</div>
+        <div className="text-[#23235F] font-bold text-base sm:text-lg">Insurance Fraudsters</div>
       </>
     ),
   },
 ];
 
 const InfoCards = () => (
-  <section className="w-full bg-[#F5F8FC] py-6 flex flex-col items-center">
-    <div className="max-w-7xl w-full flex flex-col md:flex-row gap-4 items-stretch justify-center px-2">
+  <section className="w-full bg-[#F5F8FC] py-4 sm:py-6 flex flex-col items-center">
+    <div className="max-w-7xl w-full flex flex-col md:flex-row gap-3 sm:gap-4 items-stretch justify-center px-3 sm:px-4">
       {cards.map((card, idx) => (
         <div
           key={idx}
-          className="flex flex-row items-center bg-white rounded-xl border border-[#E6ECF5] shadow-sm px-6 py-3 flex-1 min-w-[320px] max-w-lg h-[90px] gap-4"
-          style={{ minHeight: 90, maxHeight: 110 }}
+          className="w-full md:flex-1 flex flex-col sm:flex-row items-start sm:items-center bg-white rounded-xl border border-[#E6ECF5] shadow-sm px-4 sm:px-6 py-3 sm:py-4 min-w-0 md:min-w-[320px] md:max-w-lg gap-3 sm:gap-4"
         >
-          <div className="flex-shrink-0">{card.illustration}</div>
+          <div className="flex-shrink-0 [&>svg]:w-10 [&>svg]:h-10 sm:[&>svg]:w-12 sm:[&>svg]:h-12">{card.illustration}</div>
           <div className="flex-1">{card.content}</div>
         </div>
       ))}
@@ -53,4 +52,4 @@ const InfoCards = () => (
   </section>
 );
 
-export default InfoCards; 
+export default InfoCards;
