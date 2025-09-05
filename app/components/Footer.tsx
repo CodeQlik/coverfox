@@ -2,11 +2,11 @@ import React from "react";
 import Image from "next/image";
 import logo from "../images/logo.avif";
 const paymentMethods = [
-  { src: logo, alt: "Coverfox Logo" },
+  { src: "https://static.pbcdn.in/cdn/images/career/footer/paytm-icon.png", alt: "Coverfox Logo" },
   { src: "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png", alt: "Visa" },
-  { src: logo, alt: "Coverfox Logo" },
-  { src: logo, alt: "Coverfox Logo" },
-  { src: logo, alt: "Coverfox Logo" },
+  { src: "https://static.pbcdn.in/cdn/images/career/footer/visa-icon.png", alt: "Coverfox " },
+  { src: "https://static.pbcdn.in/cdn/images/career/footer/amex-icon.png", alt: "Coverfox " },
+  { src: "https://static.pbcdn.in/cdn/images/career/footer/rupay-icon.png", alt: "Coverfox Logo" },
   { src: "https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png", alt: "Mastercard" },
 ];
 const socialIcons = [
@@ -83,22 +83,24 @@ const Footer = () => (
           <span className="font-semibold text-sm mb-2">Payment Methods</span>
           <div className="flex gap-2 flex-wrap">
             {paymentMethods.map((pm, i) => (
-              <Image key={i} src={pm.src} alt={`Payment Method: ${pm.alt}${pm.alt === 'Coverfox Logo' ? ' ' + (i+1) : ''}`} width={40} height={40} className="h-8 w-auto bg-white rounded px-1 py-0.5" />
+              // external images are rendered with a native <img> to avoid requiring
+              // next.config.js image host whitelisting for these CDNs
+              <img key={i} src={pm.src} alt={`Payment Method: ${pm.alt}${pm.alt === 'Coverfox Logo' ? ' ' + (i+1) : ''}`} width={40} height={40} className="h-8 w-auto bg-white rounded px-1 py-0.5 object-contain" />
             ))}
           </div>
         </div>
         {/* Secured With */}
         <div className="flex flex-col items-center">
           <span className="font-semibold text-sm mb-2">Secured With</span>
-          <Image src={logo} alt="Secured With: Coverfox Logo" width={40} height={40} className="h-8 w-auto bg-white rounded px-2 py-1" />
+          <img src="https://static.pbcdn.in/cdn/images/career/footer/pci-icon.png" alt="Secured With: Coverfox Logo" width={40} height={40} className="h-8 w-auto bg-white rounded px-2 py-1" />
         </div>
         {/* Social Icons */}
         <div className="flex flex-col items-center md:items-end">
           <span className="font-semibold text-sm mb-2">Follow us on</span>
-          <div className="flex gap-3">
+            <div className="flex gap-3">
             {socialIcons.map((icon, i) => (
               <a key={i} href={icon.href} target="_blank" rel="noopener noreferrer" className="bg-[#22325C] rounded p-2 hover:bg-[#1a2747] transition">
-                <Image src={icon.src} alt={`Social Icon: ${icon.alt}`} width={20} height={20} className="h-5 w-5 invert" />
+                <img src={icon.src} alt={`Social Icon: ${icon.alt}`} width={20} height={20} className="h-5 w-5 invert object-contain" />
               </a>
             ))}
           </div>

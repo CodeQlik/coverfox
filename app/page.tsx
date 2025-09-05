@@ -35,7 +35,7 @@ export default function Home() {
         <Testimonials />
         <Partners />
         <ContactHelp />
-        <GroupBrands />
+        {/* <GroupBrands /> */}
       </main>
       <Footer />
     </div> 
