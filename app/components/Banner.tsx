@@ -97,7 +97,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className="w-full bg-white py-10 px-2 sm:px-8 flex flex-col items-center">
+    <section className="w-full bg-white py-8 sm:py-10 px-2 sm:px-4 md:px-8 flex flex-col items-center">
               <h1 className="text-4xl sm:text-5xl font-light text-black mt-3">
               Insurance is the bridge between risk or
                 <span className="font-bold text-[#23235F]"> peace of mind.</span>
@@ -107,16 +107,16 @@ const Banner = () => {
          </div>
       <div className="max-w-7xl w-full flex flex-col gap-8">
         {/* Main Row: Heading/Features (left) and Promo Card (right) */}
-        <div className="w-full flex flex-col lg:flex-row items-center lg:items-stretch gap-8">
+        <div className="w-full flex flex-col lg:flex-row items-center lg:items-stretch gap-6 sm:gap-8">
           {/* Left Side: Heading and Features */}
-          <div className="flex-1 flex flex-col justify-center gap-6 min-w-[320px]">
+          <div className="flex-1 flex flex-col justify-center gap-4 sm:gap-6 min-w-0 md:min-w-[320px]">
             <div>
               <h1 className="text-4xl sm:text-5xl font-light text-black leading-tight">
                 Let&#39;s find you<br />
                 <span className="font-bold text-[#23235F]">the Best Insurance</span>
               </h1>
             </div>
-            <div className="flex flex-wrap gap-8 mt-2 items-center">
+            <div className="flex flex-wrap gap-4 sm:gap-8 mt-2 items-center">
               <div className="flex items-center gap-2">
                 <span className="inline-block align-middle"><FilterIcon /></span>
                 <span className="text-[#7B61FF] font-medium">51 insurers offering lowest prices</span>
@@ -128,16 +128,16 @@ const Banner = () => {
             </div>
           </div>
           {/* Right Side: Promo Card Slider */}
-          <div className="flex-1 flex flex-col items-center justify-center pt-2 min-w-[320px]">
-            <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-lg flex flex-col items-start relative min-h-[260px] mt-2 border border-[#E6ECF5] transition-all duration-500">
+          <div className="flex-1 flex flex-col items-center justify-center pt-2 min-w-0 md:min-w-[320px]">
+            <div className="bg-white rounded-2xl p-4 sm:p-6 w-full max-w-sm sm:max-w-md shadow-lg flex flex-col items-start relative min-h-[220px] sm:min-h-[260px] mt-2 border border-[#E6ECF5] transition-all duration-500">
               <div className="text-xs text-[#8A8A8A] mb-1">{promoCards[promoIndex].disclaimer}</div>
               <div className="text-2xl font-semibold text-[#23235F] mb-1">{promoCards[promoIndex].title}</div>
               <div className="text-xl font-semibold text-[#23235F] mb-2">{promoCards[promoIndex].subtitle}</div>
               <button className="bg-[#E3F2FD] text-[#1976D2] font-semibold px-4 py-1 rounded-full text-xs mb-3">{promoCards[promoIndex].badge}</button>
               <button className="bg-[#1976D2] text-white font-semibold px-6 py-2 rounded-full shadow hover:bg-blue-700 transition mb-2">{promoCards[promoIndex].button}</button>
               {/* Emoji/image */}
-              <div className="absolute bottom-2 right-2 w-24 h-24 rounded-full overflow-hidden flex items-center justify-center bg-[#FFF7E6] border border-[#E6ECF5]">
-                <span className="text-6xl">{promoCards[promoIndex].emoji}</span>
+              <div className="absolute bottom-2 right-2 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden flex items-center justify-center bg-[#FFF7E6] border border-[#E6ECF5]">
+                <span className="text-4xl sm:text-5xl md:text-6xl">{promoCards[promoIndex].emoji}</span>
               </div>
             </div>
             {/* Dots for slider - below the card */}
@@ -155,14 +155,14 @@ const Banner = () => {
         </div>
        
         {/* Product Grid below main row */}
-        <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
           {products.slice(0, 12).map((p, i) => (
-            <div key={p.name} className="bg-[#F7FAFE] rounded-2xl p-4 flex flex-col items-center shadow-sm min-w-[120px] border border-[#E6ECF5]">
+            <div key={p.name} className="bg-[#F7FAFE] rounded-2xl p-3 sm:p-4 flex flex-col items-center shadow-sm min-w-0 sm:min-w-[120px] border border-[#E6ECF5]">
               {p.label && (
                 <div className={`text-xs font-semibold rounded px-2 py-0.5 mb-2 ${p.labelColor}`}>{p.label}</div>
               )}
               <div className="mb-2">{p.icon}</div>
-              <div className="text-center text-[#23235F] text-sm font-medium min-h-[40px] flex items-center justify-center">{p.name}</div>
+              <div className="text-center text-[#23235F] text-xs sm:text-sm font-medium min-h-[32px] sm:min-h-[40px] flex items-center justify-center">{p.name}</div>
             </div>
           ))}
         </div>
@@ -173,10 +173,10 @@ const Banner = () => {
           </button>
           <div className="w-full">
             <div className="text-[#1976D2] font-semibold mb-3">ALSO BUY</div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {alsoBuy.map((item) => (
-                <span key={item.name} className="px-4 py-2 bg-white rounded-full text-sm font-medium shadow-sm border border-[#E6ECF5] text-[#23235F] flex items-center gap-2">
-                  <span className="text-xs text-[#7B61FF]">{item.tag}</span> {item.name}
+                <span key={item.name} className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white rounded-full text-xs sm:text-sm font-medium shadow-sm border border-[#E6ECF5] text-[#23235F] flex items-center gap-2">
+                  <span className="text-[10px] sm:text-xs text-[#7B61FF]">{item.tag}</span> {item.name}
                 </span>
               ))}
             </div>
@@ -187,4 +187,4 @@ const Banner = () => {
   );
 };
 
-export default Banner; 
+export default Banner;

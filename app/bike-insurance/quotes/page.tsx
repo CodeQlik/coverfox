@@ -53,7 +53,7 @@ export default function BikeInsuranceQuotesPage() {
         </div>
 
         {/* Main Content */}
-        <div className="px-4 md:px-8 lg:px-12 -mt-6 relative z-10">
+        <div className="px-3 sm:px-4 md:px-8 lg:px-12 -mt-5 sm:-mt-6 relative z-10">
           <div className="max-w-6xl mx-auto space-y-8">
             {/* Enhanced Bike Details Header */}
             <div className="transform translate-y-0">
@@ -71,7 +71,7 @@ export default function BikeInsuranceQuotesPage() {
 
             {/* Quotes Section */}
             <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-              <div className="bg-gradient-to-r from-gray-50 to-blue-50 px-6 py-4 border-b border-gray-200">
+              <div className="bg-gradient-to-r from-gray-50 to-blue-50 px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-200">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-xl font-semibold text-gray-800">Available Insurance Plans</h2>
@@ -86,7 +86,7 @@ export default function BikeInsuranceQuotesPage() {
                 </div>
               </div>
               
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 <Suspense fallback={
                   <div className="flex items-center justify-center py-12">
                     <div className="flex flex-col items-center gap-4">
@@ -101,8 +101,8 @@ export default function BikeInsuranceQuotesPage() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-8">
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 py-8">
+              <div className="bg-white rounded-xl p-5 sm:p-6 shadow-lg border border-gray-100 text-center">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -112,7 +112,7 @@ export default function BikeInsuranceQuotesPage() {
                 <p className="text-sm text-gray-600">Get the best rates from 51+ insurance companies</p>
               </div>
               
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 text-center">
+              <div className="bg-white rounded-xl p-5 sm:p-6 shadow-lg border border-gray-100 text-center">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -122,7 +122,7 @@ export default function BikeInsuranceQuotesPage() {
                 <p className="text-sm text-gray-600">Your data is protected with bank-level security</p>
               </div>
               
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 text-center">
+              <div className="bg-white rounded-xl p-5 sm:p-6 shadow-lg border border-gray-100 text-center">
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />

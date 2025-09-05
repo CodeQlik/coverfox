@@ -113,7 +113,7 @@ export default function QuotesGrid() {
   };
 
   return (
-    <section className="mx-auto max-w-6xl">
+    <section className="mx-auto max-w-6xl px-2 sm:px-0">
       {/* top alert */}
       <div className="mb-4">
         <div className="bg-orange-50 text-orange-700 border border-orange-200 rounded-lg px-4 py-2 text-sm">
@@ -201,23 +201,33 @@ export default function QuotesGrid() {
                   ) : null}
                 </div>
               </div>
-              <div className="flex items-center gap-2 text-sm">
-                <span className="text-gray-600">Plan Type</span>
-                <select
-                  className="border rounded-md px-2 py-1"
-                  value={policyType}
-                  onChange={(e) => setPolicyType(e.target.value as any)}
-                >
-                  <option>Comprehensive</option>
-                  <option>Third Party</option>
-                  <option>OD Only</option>
-                </select>
-                <span className="ml-3 text-gray-600">IDV</span>
-                <select className="border rounded-md px-2 py-1" value={idvLevel} onChange={(e) => setIdvLevel(e.target.value as any)}>
-                  <option>Lowest</option>
-                  <option>Medium</option>
-                  <option>Highest</option>
-                </select>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm">
+                <div className="flex items-center gap-2">
+                  <label htmlFor="policyType" className="text-gray-600">Plan Type</label>
+                  <select
+                    id="policyType"
+                    className="border rounded-md px-2 py-1 text-xs sm:text-sm min-w-[130px]"
+                    value={policyType}
+                    onChange={(e) => setPolicyType(e.target.value as any)}
+                  >
+                    <option>Comprehensive</option>
+                    <option>Third Party</option>
+                    <option>OD Only</option>
+                  </select>
+                </div>
+                <div className="flex items-center gap-2">
+                  <label htmlFor="idvLevel" className="text-gray-600">IDV</label>
+                  <select
+                    id="idvLevel"
+                    className="border rounded-md px-2 py-1 text-xs sm:text-sm min-w-[110px]"
+                    value={idvLevel}
+                    onChange={(e) => setIdvLevel(e.target.value as any)}
+                  >
+                    <option>Lowest</option>
+                    <option>Medium</option>
+                    <option>Highest</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -259,10 +269,10 @@ export default function QuotesGrid() {
                   </div>
                 )}
 
-                <div className="mt-auto pt-3 border-t flex items-end justify-between">
+                <div className="mt-auto pt-3 border-t flex flex-wrap items-end justify-between gap-3">
                   <div>
                     <div className="text-xs text-gray-600">Premium</div>
-                    <div className="text-xl font-semibold text-gray-900">₹ {planPrice(p).toLocaleString("en-IN")}</div>
+                    <div className="text-lg sm:text-xl font-semibold text-gray-900">₹ {planPrice(p).toLocaleString("en-IN")}</div>
                   </div>
                   <div className="flex items-center gap-2">
                     <button
@@ -273,7 +283,7 @@ export default function QuotesGrid() {
                       {openDetails[p.id] ? "Hide details" : "Plan details"}
                     </button>
                     <button
-                      className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
+                      className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 rounded-md text-sm"
                       onClick={() => buy(p)}
                     >
                       Buy now

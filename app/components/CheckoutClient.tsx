@@ -142,10 +142,10 @@ export default function CheckoutClient() {
   };
 
   return (
-    <main className="px-4 md:px-6 lg:px-8 py-8">
-      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <main className="px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
         <div className="lg:col-span-2 space-y-4">
-          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start justify-between">
+          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 sm:p-5 flex flex-wrap items-start justify-between gap-3">
             <div>
               <div className="text-[11px] tracking-wide text-gray-500">REGISTRATION NUMBER</div>
               <div className="font-semibold text-gray-900">{reg || (bikeModel || rto ? `${bikeModel || "Bike"}${rto ? ` · ${rto}` : ""}` : "-")}</div>
@@ -160,14 +160,14 @@ export default function CheckoutClient() {
             </div>
             <div className="text-right">
               <div className="text-[11px] tracking-wide text-gray-500">PREMIUM</div>
-              <div className="text-2xl font-semibold text-gray-900">₹{premium.toLocaleString("en-IN")}</div>
+              <div className="text-xl sm:text-2xl font-semibold text-gray-900">₹{premium.toLocaleString("en-IN")}</div>
               <div className="text-xs text-gray-500">GST (18%) ₹{gst.toLocaleString("en-IN")}</div>
               <button type="button" className="text-xs text-blue-700 underline mt-1">Premium Breakup</button>
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 sm:p-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               <div>
                 <div className="text-sm font-semibold text-gray-900 mb-3">BIKE OWNER DETAILS</div>
                 <ul className="text-sm text-gray-700 space-y-1 leading-6">
@@ -203,42 +203,39 @@ export default function CheckoutClient() {
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-5">
-            <div className="text-sm font-semibold text-gray-900 mb-3">Payment Method</div>
-            <div className="flex flex-wrap gap-3 text-sm">
-              {["UPI", "Net Banking", "Card", "Wallet"].map((m) => (
-                <label key={m} className={`px-3 py-2 border rounded-md cursor-pointer inline-flex items-center ${method === m ? "border-orange-500 text-orange-600" : ""}`}>
-                  <input type="radio" name="method" value={m} className="mr-2" checked={method === m} onChange={() => setMethod(m)} />
-                  {m}
-                </label>
-              ))}
-            </div>
-            <div className="mt-4 flex flex-wrap items-center gap-3 justify-end">
-              <button
-                disabled={!agree1 || !agree2 || status === "processing" || status === "success"}
-                onClick={pay}
-                className={`inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold text-white ${status === "success" ? "bg-green-600" : "bg-orange-500 hover:bg-orange-600"} disabled:opacity-60`}
-              >
-                {status === "processing" ? "Processing..." : status === "success" ? "Paid" : `Pay ₹${grandTotal.toLocaleString("en-IN")}`}
+      <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 sm:p-5">
+        <div className="text-sm font-semibold text-gray-900 mb-2">Payment Method</div>
+        <div className="flex flex-wrap gap-3 text-xs sm:text-sm">
+          {["UPI", "Net Banking", "Card", "Wallet"].map((m) => (
+            <label key={m} className={`px-3 py-2 border rounded-md cursor-pointer inline-flex items-center ${method === m ? "border-orange-500 text-orange-600" : ""}`}>
+              <input type="radio" name="method" value={m} className="mr-2" checked={method === m} onChange={() => setMethod(m)} />
+              {m}
+            </label>
+          ))}
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-3 justify-end">
+          <button
+            disabled={!agree1 || !agree2 || status === "processing" || status === "success"}
+            onClick={pay}
+            className={`inline-flex items-center justify-center rounded-md px-5 sm:px-6 py-3 font-semibold text-white text-sm sm:text-base ${status === "success" ? "bg-green-600" : "bg-orange-500 hover:bg-orange-600"} disabled:opacity-60`}
+          >
+            {status === "processing" ? "Processing..." : status === "success" ? "Paid" : `Pay ₹${grandTotal.toLocaleString("en-IN")}`}
+          </button>
+          {status === "success" && (
+            <>
+              <button onClick={downloadPdf} className="border rounded-md px-4 py-3 inline-flex items-center text-sm sm:text-base">
+                Download Receipt
               </button>
-              {status === "success" && (
-                <>
-                  <button onClick={downloadPdf} className="border rounded-md px-4 py-3 inline-flex items-center">
-                  Download Receipt
-                  </button>
-                </>
-              )}
-            </div>
-            {status === "processing" && <div className="text-sm text-gray-500 mt-2">Validating KYC details...</div>}
-            {status === "success" && (
               <div className="text-sm text-green-700 mt-2">
                 Payment successful. We will email your policy to you. You can also download your receipt now.
               </div>
-            )}
-          </div>
+            </>
+          )}
         </div>
+      </div>
 
-        <aside className="bg-white border border-gray-200 rounded-lg shadow-sm p-5 h-max lg:sticky lg:top-6">
+        </div>
+        <aside className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 sm:p-5 h-max lg:sticky lg:top-6">
           <div className="text-sm font-semibold text-gray-800 mb-2">Order Summary</div>
           <div className="flex justify-between text-sm py-1"><span>Plan</span><span className="font-medium">{planName || planId || "-"}</span></div>
           {policyType && <div className="flex justify-between text-sm py-1"><span>Type</span><span>{policyType}</span></div>}
