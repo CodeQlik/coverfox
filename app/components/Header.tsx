@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import logo from "../images/logo.png";
 
 const navItems = [
   {
@@ -338,11 +339,9 @@ const Header = () => {
       <div className="flex items-center gap-1 sm:gap-2 text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl font-bold text-black">
         <a href="/" onClick={closeMobileMenu} className="flex items-center">
           <Image
-            src="/logo.jpeg"
+            src={logo}
             alt="Coverfox Logo"
-            width={32}
-            height={32}
-            className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16 w-auto"
+            className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16 w-auto object-contain"
             priority
           />
         </a>
