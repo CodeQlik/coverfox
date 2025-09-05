@@ -304,8 +304,6 @@ const Header = () => {
     const routes: Record<string, string> = {
       admin: "/dashboard/admin",
       user: "/dashboard/user",
-      seo: "/dashboard/seo",
-      agent: "/dashboard/agent",
     };
     return role ? routes[role] || "/dashboard/user" : "/dashboard";
   }, [role]);

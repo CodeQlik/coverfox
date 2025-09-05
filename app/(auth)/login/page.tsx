@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const ROLES = ["user", "admin", "seo", "agent"] as const;
+const ROLES = ["user", "admin"] as const;
 
 type Role = typeof ROLES[number];
 
